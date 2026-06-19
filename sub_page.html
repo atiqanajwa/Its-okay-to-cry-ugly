@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Feel your Feelings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="fyf-page">
+<a href="#main-content" class="skip-link">skip to content</a>
+    <header>
+            <nav class="navbar" aria-label="Main navigation">
+                <div class="navbar-inner">
+                    <a href="homepage.html" class="navbar-logo">
+                        <img src="images/logo.png" class="logo-img" alt="" />
+                        it's okay to <span>ugly cry</span>
+                    </a>
+
+                    <ul class="navbar-links" role="list">
+                        <li><a href="movie.html" ><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated</a></li>
+                        <li><a href="journal.html"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal</a></li>
+                        <li><a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a></li>
+                        <li><a href="sub_page.html"class="active" aria-current="page"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a></li>
+                        <li><a href="emotional_kit.html" class="navbar-cta"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a></li>
+                    </ul>
+
+                    <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMenu(this)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div> 
+                
+                <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+                    <a href="homepage.html"><i class="fa-solid fa-house" aria-hidden="true"></i> home</a>
+                    <a href="movie.html"><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated movies</a>
+                    <a href="journal.html"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal prompts</a>
+                    <a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a>
+                    <a href="sub_page.html" aria-current="page"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a>
+                    <a href="hsp_quiz.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> am i an HSP?</a>
+                    <a href="emotional_kit.html"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a>
+                </nav>
+            </nav>
+        </header>
+
+
+<!-- PAGE HERO -->
+<section class="page-hero" aria-labelledby="fyf-page-title">
+  <span class="label-tag"><i class="fa-solid fa-wind" aria-hidden="true"></i>affirmations</span>
+  <h1 id="fyf-page-title" class="page-title">you deserve to hear<br/><em>this today.</em></h1>
+  <p>Choose your mood, let the words find you. Save the ones that feel like a warm hand on your shoulder.</p>
+  <span id="saved-num" style="display:none">0</span>
+</section>
+
+<div class="hdivider"></div>
+
+<!-- BODY -->
+<main id="main-content">
+<article aria-label="affirmations content">
+<div class="body-wrap">
+
+  <!-- MAIN -->
+  <div>
+    <p class="filter-heading">how are you feeling right now?</p>
+    <div class="pills-row">
+      <button class="fpill active" onclick="setMood('all',this)">✨ all moods</button>
+      <button class="fpill" onclick="setMood('sad',this)">🌧 feeling sad</button>
+      <button class="fpill" onclick="setMood('anxious',this)">🌀 anxious</button>
+      <button class="fpill" onclick="setMood('overwhelmed',this)">🌊 overwhelmed</button>
+      <button class="fpill" onclick="setMood('tender',this)">🌸 tender-hearted</button>
+      <button class="fpill" onclick="setMood('proud',this)">☀️ self-pride</button>
+    </div>
+
+    <!-- featured -->
+    <div class="featured-card">
+      <p id="featured-text">"Your sensitivity is not too much. The world simply hasn't learned to hold it yet."</p>
+      <div class="featured-foot">
+        <span class="mood-tag" id="mood-tag">✨ all moods</span>
+        <div class="feat-btns">
+          <button class="icon-btn" aria-label="copy affirmation" onclick="copyFeatured()">📋</button>
+          <button class="icon-btn" id="feat-save-btn" aria-label="save affirmation" onclick="saveFeatured()">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ctrl-row">
+      <button class="btn-solid" onclick="nextFeatured()">✦ new affirmation</button>
+      <button class="btn-outline" onclick="shuffleGrid()">shuffle ↻</button>
+    </div>
+
+    <p class="grid-heading" id="grid-heading">all affirmations</p>
+    <div class="aff-grid" id="aff-grid"></div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="s-card">
+      <div class="s-card-head">♡ saved by you</div>
+      <div class="saved-list" id="saved-list">
+        <p class="saved-empty">Tap ♡ on any affirmation to save it here.</p>
+      </div>
+    </div>
+
+    <div class="s-card">
+      <div class="s-card-head">affirmations by mood</div>
+      <div class="meter-body" id="mood-meter"></div>
+    </div>
+
+    <div class="ritual-card">
+      <p class="ritual-title">🌿 morning ritual</p>
+      <p class="ritual-desc">A gentle 3-minute practice to start your day from softness.</p>
+      <div class="ritual-steps">
+        <div class="step-row"><span class="step-num">1</span><span>Hand on heart. Three slow, deep breaths.</span></div>
+        <div class="step-row"><span class="step-num">2</span><span>Read your affirmation aloud — slowly, like you mean it.</span></div>
+        <div class="step-row"><span class="step-num">3</span><span>Ask yourself: <em>"What do I need today?"</em> Write one word.</span></div>
+      </div>
+      <button class="ritual-btn" onclick="nextFeatured()">get today's affirmation</button>
+    </div>
+
+  </aside>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+</article>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <p class="footer-logo">it's okay to ugly cry</p>
+                    <p class="footer-note">you are allowed to feel everything.</p>
+                </div>
+
+                <div class="footer-group" aria-label="Project group">
+                    <p class="footer-group-label">designed &amp; developed by</p>
+                    <p class="footer-group-name">THE SAFE SPACE CLUB</p>
+                    <p class="footer-group-course">BIW20303 Web Design &middot; UTHM</p>
+                </div>
+
+                <address class="footer-hotline" aria-label="Crisis hotline">
+                    <span class="footer-hotline-label">Befrienders KL</span>
+                    <a href="tel:0376272929" class="footer-hotline-num" style="color:#fff; text-decoration:none;">03-7627 2929</a>
+                </address>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>all ratings are subjective - your cry level may vary.</p>
+            </div>
+        </footer>
+
+<script>
+
+function toggleMenu(btn) {
+                const menu = document.getElementById('mobile-menu');
+                const isOpen = menu.classList.toggle('open');
+                btn.setAttribute('aria-expanded', isOpen);
+            }
+
+const moods = {
+  all:{ label:'✨ all moods' },
+  sad:{ label:'🌧 feeling sad' },
+  anxious:{ label:'🌀 anxious' },
+  overwhelmed:{ label:'🌊 overwhelmed' },
+  tender:{ label:'🌸 tender-hearted' },
+  proud:{ label:'☀️ self-pride' },
+};
+
+const allAffs = [
+  { text:"Your sensitivity is not too much. The world simply hasn't learned to hold it yet.", mood:'all', emoji:'🌸' },
+  { text:"You are allowed to take up space with all of your emotions.", mood:'all', emoji:'💛' },
+  { text:"Feeling everything deeply is not a flaw. It's how you love — completely.", mood:'all', emoji:'🌿' },
+  { text:"Crying is not weakness. It's your body telling the truth.", mood:'all', emoji:'🕊' },
+  { text:"There is nothing wrong with you. You feel, and that is enough.", mood:'all', emoji:'✨' },
+  { text:"Your tenderness is a form of courage most people never find.", mood:'all', emoji:'🌙' },
+  { text:"Rest is not a reward. It is a right you were born with.", mood:'all', emoji:'🌷' },
+  { text:"You are whole and worthy, even on the days you feel broken.", mood:'all', emoji:'💌' },
+  { text:"Grief is just love with nowhere to go right now. It will find its way.", mood:'sad', emoji:'🌧' },
+  { text:"It's okay to sit with sadness a while. You don't have to rush out of it.", mood:'sad', emoji:'💙' },
+  { text:"You are allowed to be sad. You don't owe anyone happiness.", mood:'sad', emoji:'🫂' },
+  { text:"Even your darkest feelings deserve a gentle witness — let that witness be you.", mood:'sad', emoji:'🕯' },
+  { text:"Sadness means you loved something enough to miss it. That love is real.", mood:'sad', emoji:'🌧' },
+  { text:"You are safe right now, in this moment. Breathe with me.", mood:'anxious', emoji:'🌬' },
+  { text:"Anxiety is your nervous system trying to protect you. Thank it, then let it rest.", mood:'anxious', emoji:'🌀' },
+  { text:"You have survived every hard day so far. This one will pass too.", mood:'anxious', emoji:'⭐' },
+  { text:"Your worry doesn't define you. It's a wave — and waves always pass.", mood:'anxious', emoji:'🌊' },
+  { text:"You don't have to figure everything out today. One breath is enough.", mood:'anxious', emoji:'🌿' },
+  { text:"You don't have to process everything at once. One breath at a time.", mood:'overwhelmed', emoji:'🌊' },
+  { text:"It's okay to put things down. You are not a machine.", mood:'overwhelmed', emoji:'🤲' },
+  { text:"You've been carrying a lot. It's okay — and good — to set some of it down.", mood:'overwhelmed', emoji:'🍃' },
+  { text:"Not everything needs your energy right now. Choose yourself first.", mood:'overwhelmed', emoji:'🌸' },
+  { text:"Your soft heart is one of your greatest strengths.", mood:'tender', emoji:'💗' },
+  { text:"Being moved by beauty is a gift many people never experience.", mood:'tender', emoji:'🌷' },
+  { text:"Your empathy changes the rooms you walk into. Don't harden.", mood:'tender', emoji:'🕊' },
+  { text:"Feeling with your whole heart is not naivety — it's bravery.", mood:'tender', emoji:'🌸' },
+  { text:"You have survived things that would have broken others. That is remarkable.", mood:'proud', emoji:'☀️' },
+  { text:"Look how far you have come. Really — look.", mood:'proud', emoji:'🌟' },
+  { text:"You are allowed to be proud of yourself, even for the small things.", mood:'proud', emoji:'🎗' },
+  { text:"You showed up today. That matters more than you know.", mood:'proud', emoji:'💪' },
+  { text:"Your growth is real, even when it's invisible to everyone but you.", mood:'proud', emoji:'🌱' },
+];
+
+let currentMood = 'all';
+let savedItems = [];
+let featIdx = 0;
+let currentList = [...allAffs];
+
+function init() {
+  renderMeter();
+  renderGrid();
+  renderFeatured();
+}
+
+function setMood(mood, btn) {
+  currentMood = mood;
+  document.querySelectorAll('.pills-row .fpill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  currentList = mood === 'all' ? [...allAffs] : allAffs.filter(a => a.mood === mood || a.mood === 'all');
+  featIdx = 0;
+  renderFeatured();
+  renderGrid();
+  document.getElementById('grid-heading').textContent = mood === 'all' ? 'all affirmations' : moods[mood].label + ' affirmations';
+}
+
+function renderFeatured() {
+  const item = currentList[featIdx % currentList.length];
+  const el = document.getElementById('featured-text');
+  el.textContent = '\u201c' + item.text + '\u201d';
+  document.getElementById('mood-tag').textContent = moods[currentMood].label;
+  const btn = document.getElementById('feat-save-btn');
+  const saved = savedItems.some(s => s.text === item.text);
+  btn.textContent = saved ? '♥' : '♡';
+  btn.classList.toggle('saved', saved);
+}
+
+function nextFeatured() {
+  const el = document.getElementById('featured-text');
+  el.classList.add('out');
+  setTimeout(() => {
+    featIdx = (featIdx + 1) % currentList.length;
+    renderFeatured();
+    el.classList.remove('out');
+  }, 340);
+}
+
+function saveFeatured() {
+  const item = currentList[featIdx % currentList.length];
+  toggleSave(item);
+  renderFeatured();
+  renderGrid();
+}
+
+function copyFeatured() {
+  const item = currentList[featIdx % currentList.length];
+  navigator.clipboard.writeText('\u201c' + item.text + '\u201d').then(() => toast('Copied to clipboard ✓')).catch(() => toast('Affirmation ready to share ♡'));
+}
+
+function renderGrid() {
+  const g = document.getElementById('aff-grid');
+  if (!currentList.length) { g.innerHTML = '<p class="empty-state">No affirmations for this mood yet 🌸</p>'; return; }
+  g.innerHTML = currentList.map((a, i) => {
+    const saved = savedItems.some(s => s.text === a.text);
+    const active = i === (featIdx % currentList.length);
+    return `<div class="aff-card${active ? ' featured-active' : ''}">
+      <span class="card-emoji">${a.emoji}</span>
+      <p class="card-text">\u201c${a.text}\u201d</p>
+      <span class="card-mood">${moods[a.mood]?.label || a.mood}</span>
+      <button class="card-save${saved ? ' saved' : ''}" onclick="toggleSaveIdx(${i})">${saved ? '♥' : '♡'}</button>
+    </div>`;
+  }).join('');
+}
+
+function shuffleGrid() {
+  for (let i = currentList.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [currentList[i], currentList[j]] = [currentList[j], currentList[i]];
+  }
+  featIdx = 0;
+  renderFeatured();
+  renderGrid();
+  toast('Shuffled ↻');
+}
+
+function toggleSave(item) {
+  const idx = savedItems.findIndex(s => s.text === item.text);
+  if (idx === -1) { savedItems.unshift(item); toast('Saved ♥'); }
+  else { savedItems.splice(idx, 1); toast('Removed from saved'); }
+  document.getElementById('saved-num').textContent = savedItems.length;
+  renderSavedSidebar();
+}
+
+function toggleSaveIdx(i) {
+  toggleSave(currentList[i]);
+  renderGrid();
+  renderFeatured();
+}
+
+function renderSavedSidebar() {
+  const el = document.getElementById('saved-list');
+  if (!savedItems.length) { el.innerHTML = '<p class="saved-empty">Tap ♡ on any affirmation to save it here.</p>'; return; }
+  el.innerHTML = savedItems.map((a, i) => `<div class="saved-item">${a.emoji} ${a.text}<button class="rm" onclick="removeSaved(${i})">✕</button></div>`).join('');
+}
+
+function removeSaved(i) {
+  savedItems.splice(i, 1);
+  document.getElementById('saved-num').textContent = savedItems.length;
+  renderSavedSidebar();
+  renderGrid();
+  renderFeatured();
+}
+
+function renderMeter() {
+  const keys = ['all','sad','anxious','overwhelmed','tender','proud'];
+  const counts = {};
+  keys.forEach(k => counts[k] = allAffs.filter(a => a.mood === k).length);
+  const max = Math.max(...Object.values(counts));
+  document.getElementById('mood-meter').innerHTML = keys.map(k => `
+    <div class="meter-row">
+      <span class="meter-name">${moods[k].label.split(' ').slice(0,2).join(' ')}</span>
+      <div class="meter-track"><div class="meter-fill" style="width:${Math.round(counts[k]/max*100)}%"></div></div>
+      <span class="meter-cnt">${counts[k]}</span>
+    </div>`).join('');
+}
+
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+init();
+</script>
+</body>
+</html>

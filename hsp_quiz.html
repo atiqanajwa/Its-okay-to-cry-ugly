@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Am I an HSP? — it's okay to ugly cry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="hsp-quiz-page">
+    <a href="#main-content" class="skip-link">skip to content</a>
+
+    <!-- CONFETTI CANVAS -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- NAV -->
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="navbar-inner">
+                <a href="homepage.html" class="navbar-logo">
+                    <img src="images/logo.png" class="logo-img" alt="" />
+                    it's okay to <span>ugly cry</span>
+                </a>
+                <ul class="navbar-links" role="list">
+                    <li><a href="movie.html"><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated</a></li>
+                    <li><a href="journal.html"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal</a></li>
+                    <li><a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a></li>
+                    <li><a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a></li>
+                    <li><a href="emotional_kit.html" class="navbar-cta"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a></li>
+                </ul>
+                <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMenu(this)">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+                <a href="homepage.html"><i class="fa-solid fa-house"></i> home</a>
+                <a href="movie.html"><i class="fa-solid fa-film"></i> cry-rated movies</a>
+                <a href="journal.html"><i class="fa-solid fa-pen-nib"></i> journal prompts</a>
+                <a href="hsp.html"><i class="fa-solid fa-heart"></i> HSP explained</a>
+                <a href="sub_page.html"><i class="fa-solid fa-wind"></i> feel your feelings</a>
+                <a href="hsp_quiz.html"><i class="fa-solid fa-circle-question"></i> am i an HSP?</a>
+                <a href="emotional_kit.html"><i class="fa-solid fa-hand-holding-heart"></i> get support</a>
+            </nav>
+        </nav>
+    </header>
+
+    <main id="main-content">
+    <article aria-label="HSP self-assessment quiz">
+    <section aria-label="quiz screens">
+
+    <!-- QUIZ CONTAINER -->
+    <div class="quiz-wrap">
+
+        <!-- INTRO SCREEN -->
+        <div id="screen-intro">
+            <span class="label-tag"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>self-discovery</span>
+            <h1 class="quiz-title">am I a<br /><em>highly sensitive person?</em></h1>
+            <p class="quiz-lead">This gentle self-assessment is adapted from Dr. Elaine Aron's original Highly Sensitive Person Scale. There are no right or wrong answers — only honest ones. Answer as you truly are, not as you wish you were, or think you should be.</p>
+            <div class="intro-note">
+                <strong>A note before you begin:</strong> This quiz is a reflection tool, not a clinical diagnosis. It covers the four pillars of high sensitivity — depth of processing, overstimulation, emotional reactivity, and sensitivity to subtleties. Whatever your result, you are valid exactly as you are. 🌿
+            </div>
+            <button class="btn-start ready" id="btn-start">begin the self-test ✨</button>
+            <div class="intro-meta">
+                <span>📋 27 questions</span>
+                <span>⏱ about 5 minutes</span>
+                <span>🔒 your answers stay on your device</span>
+            </div>
+        </div>
+
+        <!-- QUIZ SCREEN -->
+        <div id="screen-quiz">
+            <div class="progress-label">
+                <span id="q-counter">Question 1 of 27</span>
+                <span id="q-pct">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div id="q-card-wrap"></div>
+            <div class="q-nav">
+                <button class="btn-prev" id="btn-prev" disabled>← back</button>
+                <button class="btn-next" id="btn-next" disabled>next →</button>
+            </div>
+        </div>
+
+        <!-- RESULTS SCREEN -->
+        <div id="screen-results">
+            <div class="result-hero">
+                <span class="result-emoji" id="result-emoji">🌿</span>
+                <div class="result-badge" id="result-badge">result</div>
+                <div class="score-pct" id="score-pct">0%</div>
+                <div class="score-sub">sensitivity score</div>
+                <h2 class="result-title" id="result-title">your result</h2>
+                <p class="result-desc" id="result-desc"></p>
+            </div>
+
+            <div class="score-wrap">
+                <div class="score-label-row">
+                    <span>not sensitive</span>
+                    <span>highly sensitive</span>
+                </div>
+                <div class="score-track">
+                    <div class="score-fill" id="score-fill"></div>
+                </div>
+            </div>
+
+            <div class="dimensions">
+                <div class="dim-heading">your sensitivity profile — by dimension</div>
+                <div class="dim-row">
+                    <div class="dim-name">Depth of Processing</div>
+                    <div class="dim-track"><div class="dim-fill" id="dim-d"></div></div>
+                    <div class="dim-pct" id="dim-d-pct">0%</div>
+                </div>
+                <div class="dim-row">
+                    <div class="dim-name">Overstimulation</div>
+                    <div class="dim-track"><div class="dim-fill" id="dim-o"></div></div>
+                    <div class="dim-pct" id="dim-o-pct">0%</div>
+                </div>
+                <div class="dim-row">
+                    <div class="dim-name">Emotional Reactivity</div>
+                    <div class="dim-track"><div class="dim-fill" id="dim-e"></div></div>
+                    <div class="dim-pct" id="dim-e-pct">0%</div>
+                </div>
+                <div class="dim-row">
+                    <div class="dim-name">Sensitivity to Subtleties</div>
+                    <div class="dim-track"><div class="dim-fill" id="dim-s"></div></div>
+                    <div class="dim-pct" id="dim-s-pct">0%</div>
+                </div>
+            </div>
+
+            <div class="result-aff">
+                <p id="result-aff-text"></p>
+            </div>
+
+            <div class="result-actions">
+                <a href="hsp.html" class="btn-solid">📖 read the HSP guide</a>
+                <a href="journal.html" class="btn-outline">✍️ write about this</a>
+                <a href="sub_page.html" class="btn-outline">💌 affirmations</a>
+            </div>
+
+            <div class="retake-row">
+                <button class="btn-retake" id="btn-retake">retake the quiz</button>
+            </div>
+        </div>
+
+    </div>
+
+    </section>
+    </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <p class="footer-logo">it's okay to ugly cry</p>
+                <p class="footer-note">you are allowed to feel everything.</p>
+            </div>
+            <div class="footer-group">
+                <p class="footer-group-label">designed &amp; developed by</p>
+                <p class="footer-group-name">THE SAFE SPACE CLUB</p>
+                <p class="footer-group-course">BIW20303 Web Design &middot; UTHM</p>
+            </div>
+            <address class="footer-hotline">
+                <span class="footer-hotline-label">Befrienders KL</span>
+                <a href="tel:0376272929" class="footer-hotline-num" style="color:#fff;text-decoration:none;">03-7627 2929</a>
+            </address>
+        </div>
+        <div class="footer-bottom">
+            <p>all ratings are subjective - your cry level may vary.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* ─── MOBILE MENU ─── */
+        function toggleMenu(btn) {
+            const menu = document.getElementById('mobile-menu');
+            const isOpen = menu.classList.toggle('open');
+            btn.setAttribute('aria-expanded', isOpen);
+        }
+
+        /* ─── QUESTIONS ─── */
+        const questions = [
+            { dim: 'D', cat: 'Depth of Processing', text: 'I seem to be aware of subtleties in my environment that others don\'t notice.' },
+            { dim: 'D', cat: 'Depth of Processing', text: 'After a busy, stimulating day, I feel the need to retreat to a quiet space to think and recharge.' },
+            { dim: 'D', cat: 'Depth of Processing', text: 'I tend to think deeply about experiences, conversations, and events long after they\'ve passed.' },
+            { dim: 'D', cat: 'Depth of Processing', text: 'I often find myself wondering about the deeper meaning or patterns behind things most people take at face value.' },
+            { dim: 'D', cat: 'Depth of Processing', text: 'I notice and appreciate subtle details — in music, art, food, or language — that others tend to miss.' },
+            { dim: 'D', cat: 'Depth of Processing', text: 'I reflect carefully before making decisions, even when others seem to decide quickly.' },
+            { dim: 'D', cat: 'Depth of Processing', text: 'I find myself processing experiences on multiple levels at once — emotionally, intellectually, and physically.' },
+            { dim: 'O', cat: 'Overstimulation', text: 'I get rattled when I have a lot to accomplish in a short amount of time.' },
+            { dim: 'O', cat: 'Overstimulation', text: 'Loud noises, strong smells, or rough textures feel genuinely uncomfortable to me — not just mildly annoying.' },
+            { dim: 'O', cat: 'Overstimulation', text: 'I feel more drained than most people after a hectic or highly stimulating day.' },
+            { dim: 'O', cat: 'Overstimulation', text: 'Crowds, busy shopping centres, or high-energy environments leave me feeling overwhelmed or depleted.' },
+            { dim: 'O', cat: 'Overstimulation', text: 'When someone is watching me perform a task, I become nervous or make more mistakes than usual.' },
+            { dim: 'O', cat: 'Overstimulation', text: 'I need more downtime to recover from stressful situations than most people I know.' },
+            { dim: 'O', cat: 'Overstimulation', text: 'Changes in my routine or unexpected events tend to unsettle me more than they seem to affect others.' },
+            { dim: 'E', cat: 'Emotional Reactivity', text: 'I am deeply moved by music, poetry, or visual art in a way that can bring me to tears.' },
+            { dim: 'E', cat: 'Emotional Reactivity', text: 'I absorb the moods and emotions of people around me — their anxiety makes me anxious; their calm calms me.' },
+            { dim: 'E', cat: 'Emotional Reactivity', text: 'I feel things more intensely than most people seem to — joy, sadness, and everything in between.' },
+            { dim: 'E', cat: 'Emotional Reactivity', text: 'I am deeply moved by stories of kindness, injustice, or suffering — even about strangers.' },
+            { dim: 'E', cat: 'Emotional Reactivity', text: 'When I watch a sad film or read a moving book, I carry those feelings with me for hours or days afterward.' },
+            { dim: 'E', cat: 'Emotional Reactivity', text: 'I notice when someone in a room is upset or unhappy, even before anyone else seems to.' },
+            { dim: 'E', cat: 'Emotional Reactivity', text: 'It bothers me to observe cruelty, unfairness, or suffering — even in fictional scenarios.' },
+            { dim: 'S', cat: 'Sensitivity to Subtleties', text: 'I notice subtle shifts in people\'s tone, body language, or expression that others tend to miss.' },
+            { dim: 'S', cat: 'Sensitivity to Subtleties', text: 'I can tell when a relationship or situation has subtly shifted, even without obvious signs.' },
+            { dim: 'S', cat: 'Sensitivity to Subtleties', text: 'I find beauty in small things — light through leaves, the smell of rain, a particular quality of silence.' },
+            { dim: 'S', cat: 'Sensitivity to Subtleties', text: 'I notice when a room "feels different" after a conflict, even if nothing visible has changed.' },
+            { dim: 'S', cat: 'Sensitivity to Subtleties', text: 'I have a strong intuition about people and situations that often turns out to be accurate.' },
+            { dim: 'S', cat: 'Sensitivity to Subtleties', text: 'I am bothered by flicker in lighting, background noise, or minor environmental details that others ignore.' },
+        ];
+
+        const SCALE = [
+            { label: 'Not at all like me', val: 1 },
+            { label: 'A little like me', val: 2 },
+            { label: 'Somewhat like me', val: 3 },
+            { label: 'Quite a bit like me', val: 4 },
+            { label: 'Very much like me', val: 5 },
+        ];
+
+        /* ─── STATE ─── */
+        let current = 0;
+        let answers = new Array(questions.length).fill(null);
+        let direction = 'forward'; // 'forward' | 'back'
+
+        /* ─── DOM REFS ─── */
+        const screenIntro = document.getElementById('screen-intro');
+        const screenQuiz = document.getElementById('screen-quiz');
+        const screenResults = document.getElementById('screen-results');
+        const qWrap = document.getElementById('q-card-wrap');
+        const progressFill = document.getElementById('progress-fill');
+        const qCounter = document.getElementById('q-counter');
+        const qPct = document.getElementById('q-pct');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+
+        /* ─── START ─── */
+        document.getElementById('btn-start').addEventListener('click', () => {
+            screenIntro.style.display = 'none';
+            screenQuiz.style.display = 'block';
+            renderQuestion();
+        });
+
+        /* ─── RENDER QUESTION ─── */
+        function renderQuestion() {
+            const q = questions[current];
+            const ans = answers[current];
+
+            const enterClass = direction === 'forward' ? 'enter-right' : 'enter-left';
+
+            qWrap.innerHTML = `
+        <div class="q-card ${enterClass}">
+          <div class="q-category">${q.cat}</div>
+          <p class="q-text">${q.text}</p>
+          <div class="answers">
+            ${SCALE.map(s => `
+              <button class="answer-btn${ans === s.val ? ' selected' : ''}"
+                      onclick="selectAnswer(${s.val}, event)">
+                <span class="answer-dot"></span>
+                <span class="answer-label">${s.label}</span>
+                <span class="answer-val">${s.val}/5</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>`;
+
+            const pct = Math.round((current / questions.length) * 100);
+            progressFill.style.width = pct + '%';
+            progressFill.classList.toggle('active', pct > 0);
+            qCounter.textContent = `Question ${current + 1} of ${questions.length}`;
+            qPct.textContent = pct + '%';
+
+            btnPrev.disabled = current === 0;
+            btnNext.disabled = ans === null;
+            btnNext.textContent = current === questions.length - 1 ? 'see my results ✨' : 'next →';
+        }
+
+        /* ─── SELECT ANSWER ─── */
+        function selectAnswer(val, e) {
+            // ripple
+            const btn = e.currentTarget;
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height) * 1.8;
+            ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px`;
+            btn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 520);
+
+            answers[current] = val;
+            document.querySelectorAll('.answer-btn').forEach(b => {
+                const bval = parseInt(b.querySelector('.answer-val').textContent);
+                b.classList.toggle('selected', bval === val);
+            });
+
+            const wasDisabled = btnNext.disabled;
+            btnNext.disabled = false;
+            if (wasDisabled) {
+                btnNext.classList.remove('just-enabled');
+                void btnNext.offsetWidth; // reflow
+                btnNext.classList.add('just-enabled');
+            }
+        }
+
+        /* ─── NAV ─── */
+        btnPrev.addEventListener('click', () => {
+            if (current > 0) {
+                direction = 'back';
+                current--;
+                renderQuestion();
+            }
+        });
+
+        btnNext.addEventListener('click', () => {
+            if (current < questions.length - 1) {
+                direction = 'forward';
+                current++;
+                renderQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                launchResults();
+            }
+        });
+
+        /* ═══════════════════════════════════════════════
+           CONFETTI ENGINE
+           ═══════════════════════════════════════════════ */
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let confettiRAF;
+
+        // brand colour palette for confetti
+        const COLOURS = ['#c96a44', '#e08060', '#f0c4b0', '#1e3a2f', '#3d6b55', '#ede4d4', '#fff'];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function spawnParticles(count) {
+            resizeCanvas();
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: -10 - Math.random() * 200,
+                    w: 6 + Math.random() * 8,
+                    h: 3 + Math.random() * 4,
+                    color: COLOURS[Math.floor(Math.random() * COLOURS.length)],
+                    angle: Math.random() * Math.PI * 2,
+                    spin: (Math.random() - 0.5) * 0.18,
+                    vx: (Math.random() - 0.5) * 3,
+                    vy: 2.5 + Math.random() * 3.5,
+                    alpha: 1,
+                    decay: 0.0055 + Math.random() * 0.003,
+                });
+            }
+        }
+
+        function drawConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                ctx.save();
+                ctx.globalAlpha = p.alpha;
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.angle);
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, p.w / 2, p.h / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+
+                p.x += p.vx;
+                p.y += p.vy;
+                p.angle += p.spin;
+                p.vy += 0.08; // gravity
+                p.alpha -= p.decay;
+            });
+            particles = particles.filter(p => p.alpha > 0);
+
+            if (particles.length > 0) {
+                confettiRAF = requestAnimationFrame(drawConfetti);
+            } else {
+                canvas.classList.remove('active');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        function launchConfetti() {
+            canvas.classList.add('active');
+            cancelAnimationFrame(confettiRAF);
+            particles = [];
+
+            // burst 1 — immediate
+            spawnParticles(120);
+            drawConfetti();
+
+            // burst 2 — 600ms later
+            setTimeout(() => { spawnParticles(80); }, 600);
+
+            // burst 3 — 1.2s later
+            setTimeout(() => { spawnParticles(60); }, 1200);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+
+        /* ═══════════════════════════════════════════════
+           ANIMATED COUNTER (score number counts up)
+           ═══════════════════════════════════════════════ */
+        function countUp(el, target, duration) {
+            const start = performance.now();
+            function tick(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(ease * target) + '%';
+                if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        }
+
+        /* ─── RESULTS ─── */
+        function launchResults() {
+            screenQuiz.style.display = 'none';
+            screenResults.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            const total = answers.reduce((a, b) => a + (b || 0), 0);
+            const maxTotal = questions.length * 5;
+            const pct = Math.round((total / maxTotal) * 100);
+
+            const dims = { D: { total: 0, max: 0 }, O: { total: 0, max: 0 }, E: { total: 0, max: 0 }, S: { total: 0, max: 0 } };
+            questions.forEach((q, i) => { dims[q.dim].total += answers[i] || 0; dims[q.dim].max += 5; });
+            const dimPcts = {};
+            Object.keys(dims).forEach(k => { dimPcts[k] = Math.round((dims[k].total / dims[k].max) * 100); });
+
+            let emoji, badge, badgeCls, titleHtml, desc, affText;
+
+            if (pct >= 70) {
+                emoji = '🌿';
+                badge = 'Highly Sensitive Person';
+                badgeCls = 'badge-high';
+                titleHtml = 'you feel the world<br/><em>very deeply.</em>';
+                desc = 'Your score places you in the highly sensitive range. You likely process experiences with remarkable depth, notice what others miss, and feel emotions with a fullness that can be both a gift and a challenge. This is not too much — it is exactly who you are. About 15–20% of people share this trait.';
+                affText = '"Your sensitivity is not a flaw to manage. It is the lens through which you see beauty that others walk right past. The world needs people who feel deeply."';
+            } else if (pct >= 45) {
+                emoji = '🌸';
+                badge = 'Moderately Sensitive';
+                badgeCls = 'badge-mod';
+                titleHtml = 'you feel things with<br/><em>real depth.</em>';
+                desc = 'Your score suggests a moderate level of sensitivity. You likely experience some HSP traits — especially around emotional depth and empathy — while feeling less affected in other areas. Sensitivity exists on a spectrum, and your experience is real and valid wherever you fall on it.';
+                affText = '"Whatever the number says, your capacity to feel, to notice, to care — that is a remarkable thing. Honour it."';
+            } else {
+                emoji = '☀️';
+                badge = 'Low Sensitivity Score';
+                badgeCls = 'badge-low';
+                titleHtml = 'you process the world<br/><em>differently — and that\'s okay.</em>';
+                desc = 'Your score suggests you may not identify strongly with the HSP trait. That doesn\'t mean you don\'t feel deeply — it simply means your nervous system processes things in a different way. Every way of experiencing the world has its own gifts.';
+                affText = '"You don\'t have to be highly sensitive to be deeply human. Your way of moving through the world has its own quiet beauty."';
+            }
+
+            // Set content
+            const emojiEl = document.getElementById('result-emoji');
+            emojiEl.textContent = emoji;
+
+            const badgeEl = document.getElementById('result-badge');
+            badgeEl.textContent = badge;
+            badgeEl.className = `result-badge ${badgeCls}`;
+
+            document.getElementById('result-title').innerHTML = titleHtml;
+            document.getElementById('result-desc').textContent = desc;
+            document.getElementById('result-aff-text').textContent = affText;
+
+            // Fire confetti 🎉
+            launchConfetti();
+
+            // Cascade animations
+            requestAnimationFrame(() => {
+                // emoji boom
+                emojiEl.classList.add('animate');
+                emojiEl.addEventListener('animationend', () => {
+                    emojiEl.classList.remove('animate');
+                    emojiEl.style.opacity = '1';
+                    emojiEl.style.transform = 'scale(1)';
+                    emojiEl.classList.add('floating');
+                }, { once: true });
+
+                // badge pop
+                setTimeout(() => badgeEl.classList.add('visible'), 220);
+
+                // score count-up
+                const scorePctEl = document.getElementById('score-pct');
+                scorePctEl.textContent = '0%';
+                setTimeout(() => {
+                    scorePctEl.classList.add('visible');
+                    countUp(scorePctEl, pct, 1000);
+                    document.querySelector('.score-sub').classList.add('visible');
+                }, 350);
+
+                // title & desc
+                setTimeout(() => document.getElementById('result-title').classList.add('visible'), 420);
+                setTimeout(() => document.getElementById('result-desc').classList.add('visible'), 560);
+
+                // score bar
+                setTimeout(() => {
+                    document.querySelector('.score-wrap').classList.add('visible');
+                    setTimeout(() => { document.getElementById('score-fill').style.width = pct + '%'; }, 80);
+                }, 680);
+
+                // dimension bars
+                setTimeout(() => {
+                    document.querySelector('.dimensions').classList.add('visible');
+                    document.querySelectorAll('.dim-row').forEach(r => r.classList.add('visible'));
+                    setTimeout(() => {
+                        ['D', 'O', 'E', 'S'].forEach((d, i) => {
+                            const p = dimPcts[d];
+                            setTimeout(() => {
+                                document.getElementById(`dim-${d.toLowerCase()}`).style.width = p + '%';
+                                document.getElementById(`dim-${d.toLowerCase()}-pct`).textContent = p + '%';
+                            }, i * 120);
+                        });
+                    }, 120);
+                }, 860);
+
+                // affirmation
+                setTimeout(() => document.querySelector('.result-aff').classList.add('visible'), 1250);
+
+                // actions & retake
+                setTimeout(() => document.querySelector('.result-actions').classList.add('visible'), 1450);
+                setTimeout(() => document.querySelector('.retake-row').classList.add('visible'), 1650);
+            });
+        }
+
+        /* ─── RETAKE ─── */
+        document.getElementById('btn-retake').addEventListener('click', () => {
+            current = 0;
+            direction = 'forward';
+            answers = new Array(questions.length).fill(null);
+
+            // reset all result animations
+            document.getElementById('result-emoji').style.opacity = '';
+            document.getElementById('result-emoji').style.transform = '';
+            document.getElementById('result-emoji').classList.remove('animate', 'floating');
+            document.getElementById('result-badge').classList.remove('visible');
+            document.getElementById('score-pct').classList.remove('visible');
+            document.querySelector('.score-sub').classList.remove('visible');
+            document.getElementById('result-title').classList.remove('visible');
+            document.getElementById('result-desc').classList.remove('visible');
+            document.querySelector('.score-wrap').classList.remove('visible');
+            document.querySelector('.dimensions').classList.remove('visible');
+            document.querySelectorAll('.dim-row').forEach(r => r.classList.remove('visible'));
+            document.querySelector('.result-aff').classList.remove('visible');
+            document.querySelector('.result-actions').classList.remove('visible');
+            document.querySelector('.retake-row').classList.remove('visible');
+            document.getElementById('score-fill').style.width = '0%';
+            ['d', 'o', 'e', 's'].forEach(d => {
+                document.getElementById(`dim-${d}`).style.width = '0%';
+                document.getElementById(`dim-${d}-pct`).textContent = '0%';
+            });
+
+            screenResults.style.display = 'none';
+            screenIntro.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
+

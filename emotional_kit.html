@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Emotion Toolkit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="ek-page">
+<a href="#main-content" class="skip-link">skip to content</a>
+
+<header>
+            <nav class="navbar" aria-label="Main navigation">
+                <div class="navbar-inner">
+                    <a href="homepage.html" class="navbar-logo">
+                        <img src="images/logo.png" class="logo-img" alt="" />
+                        it's okay to <span>ugly cry</span>
+                    </a>
+
+                    <ul class="navbar-links" role="list">
+                        <li><a href="movie.html" ><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated</a></li>
+                        <li><a href="journal.html"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal</a></li>
+                        <li><a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a></li>
+                        <li><a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a></li>
+                        <li><a href="emotional_kit.html" class="navbar-cta active" aria-current="page"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a></li>
+                    </ul>
+
+                    <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMenu(this)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div> 
+                
+                <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+                    <a href="homepage.html"><i class="fa-solid fa-house" aria-hidden="true"></i> home</a>
+                    <a href="movie.html"><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated movies</a>
+                    <a href="journal.html"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal prompts</a>
+                    <a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a>
+                    <a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a>
+                    <a href="hsp_quiz.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> am i an HSP?</a>
+                    <a href="emotional_kit.html" aria-current="page"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a>
+                </nav>
+            </nav>
+        </header>
+
+<main id="main-content">
+
+<section class="page-hero" aria-labelledby="ek-page-title">
+  <span class="label-tag"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>emotional toolkit</span>
+  <h1 id="ek-page-title" class="page-title">your <em>emotion toolkit.</em></h1>
+  <p>Gentle, science-backed tools to help you ride the waves — not suppress them. Because the goal isn't to feel less. It's to feel without drowning.</p>
+  <div class="page-hero-pills">
+    <span class="hero-pill">🌬 breathing techniques</span>
+    <span class="hero-pill">🌊 regulation tools</span>
+    <span class="hero-pill">❓ FAQ</span>
+    <span class="hero-pill">📞 malaysian hotlines</span>
+  </div>
+</section>
+
+<article aria-label="emotional toolkit content">
+<section class="ek-section" aria-labelledby="h-breathing">
+  <div class="section-inner">
+    <p class="section-label"><span>🌡</span> mood check-in</p>
+    <h2 class="section-h" id="h-breathing">how are you feeling <em>right now?</em></h2>
+    <p class="section-desc" style="margin-bottom:2rem;">Start here. Knowing your emotional state helps you choose the right tool for this moment.</p>
+
+    <div class="mood-checkin">
+      <span class="mood-checkin-label">i'm feeling:</span>
+      <div class="mood-pills">
+        <button class="mpill" onclick="setMood('overwhelmed',this)">🌊 overwhelmed</button>
+        <button class="mpill" onclick="setMood('anxious',this)">🌀 anxious</button>
+        <button class="mpill" onclick="setMood('sad',this)">🌧 sad</button>
+        <button class="mpill" onclick="setMood('numb',this)">🪨 numb</button>
+        <button class="mpill" onclick="setMood('angry',this)">🔥 angry</button>
+        <button class="mpill" onclick="setMood('tender',this)">🌸 tender</button>
+      </div>
+      <p class="mood-tip" id="mood-tip-text"></p>
+    </div>
+
+    <p class="section-label"><span>🧘</span> regulation techniques</p>
+    <h2 class="section-h">gentle ways to <em>come back to yourself.</em></h2>
+    <p class="section-desc" style="margin-bottom:2rem;">Not to suppress the feeling — but to ride it with grace.</p>
+
+    <div class="filter-row">
+      <button class="fpill active" onclick="filterTech('all',this)">all techniques</button>
+      <button class="fpill" onclick="filterTech('breathe',this)">🌬 breathing</button>
+      <button class="fpill" onclick="filterTech('ground',this)">🌿 grounding</button>
+      <button class="fpill" onclick="filterTech('body',this)">🤲 body-based</button>
+      <button class="fpill" onclick="filterTech('mind',this)">💭 mind-based</button>
+    </div>
+
+    <div class="techniques-grid" id="techniques-grid">
+
+      <div class="ek-technique-card" data-cat="breathe">
+        <div class="tc-top">
+          <span class="tc-icon">🌬</span>
+          <div class="tc-title-block">
+            <p class="tc-tag">breathing</p>
+            <h3 class="tc-title">4-7-8 Breathing</h3>
+          </div>
+        </div>
+        <p>Activates your parasympathetic nervous system, slowing your heart rate and calming the stress response in minutes.</p>
+        <ul class="tc-steps">
+          <li>Inhale slowly through your nose for 4 counts</li>
+          <li>Hold your breath gently for 7 counts</li>
+          <li>Exhale completely through your mouth for 8 counts</li>
+          <li>Repeat 3–4 cycles, letting your shoulders drop</li>
+        </ul>
+        <span class="tc-badge">✦ good for: anxiety · overwhelm</span>
+      </div>
+
+      <div class="ek-technique-card" data-cat="breathe">
+        <div class="tc-top">
+          <span class="tc-icon">📦</span>
+          <div class="tc-title-block">
+            <p class="tc-tag">breathing</p>
+            <h3 class="tc-title">Box Breathing</h3>
+          </div>
+        </div>
+        <p>Used by Navy SEALs and therapists alike — a simple square pattern that resets your nervous system fast.</p>
+        <ul class="tc-steps">
+          <li>Inhale for 4 counts</li>
+          <li>Hold for 4 counts</li>
+          <li>Exhale for 4 counts</li>
+          <li>Hold empty for 4 counts — then repeat</li>
+        </ul>
+        <span class="tc-badge">✦ good for: panic · stress</span>
+      </div>
+
+      <div class="ek-technique-card" data-cat="ground">
+        <div class="tc-top">
+          <span class="tc-icon">🌿</span>
+          <div class="tc-title-block">
+            <p class="tc-tag">grounding</p>
+            <h3 class="tc-title">5-4-3-2-1 Grounding</h3>
+          </div>
+        </div>
+        <p>Pulls you out of your head and back into your body by engaging all five senses in the present moment.</p>
+        <ul class="tc-steps">
+          <li>Name 5 things you can <strong>see</strong></li>
+          <li>Name 4 things you can <strong>touch</strong> (and feel them)</li>
+          <li>Name 3 things you can <strong>hear</strong></li>
+          <li>Name 2 things you can <strong>smell</strong></li>
+          <li>Name 1 thing you can <strong>taste</strong></li>
+        </ul>
+        <span class="tc-badge">✦ good for: dissociation · overwhelm</span>
+      </div>
+
+      <div class="ek-technique-card" data-cat="mind">
+        <div class="tc-top">
+          <span class="tc-icon">🖊</span>
+          <div class="tc-title-block">
+            <p class="tc-tag">mind-based</p>
+            <h3 class="tc-title">Name It to Tame It</h3>
+          </div>
+        </div>
+        <p>Research by neuroscientist Dr. Dan Siegel shows that labeling your emotion reduces its intensity by activating your prefrontal cortex.</p>
+        <ul class="tc-steps">
+          <li>Pause and ask: what exactly is this feeling?</li>
+          <li>Get specific — not "bad," but "ashamed" or "lonely"</li>
+          <li>Say it aloud or write it down</li>
+          <li>Notice the subtle softening that follows</li>
+        </ul>
+        <span class="tc-badge">✦ good for: all emotions</span>
+      </div>
+
+      <div class="ek-technique-card" data-cat="body">
+        <div class="tc-top">
+          <span class="tc-icon">🤲</span>
+          <div class="tc-title-block">
+            <p class="tc-tag">body-based</p>
+            <h3 class="tc-title">Self-Soothing Touch</h3>
+          </div>
+        </div>
+        <p>Physical touch releases oxytocin and signals safety to your nervous system — even your own touch counts.</p>
+        <ul class="tc-steps">
+          <li>Place one hand over your heart</li>
+          <li>Feel the warmth and gentle pressure</li>
+          <li>Try saying softly: "I'm here. You're safe."</li>
+          <li>Stay here for 30–60 seconds</li>
+        </ul>
+        <span class="tc-badge">✦ good for: grief · loneliness · fear</span>
+      </div>
+
+      <div class="ek-technique-card" data-cat="body">
+        <div class="tc-top">
+          <span class="tc-icon">🧊</span>
+          <div class="tc-title-block">
+            <p class="tc-tag">body-based</p>
+            <h3 class="tc-title">Cold Water Reset</h3>
+          </div>
+        </div>
+        <p>Splashing cold water on your face or wrists activates the mammalian dive reflex, slowing your heart rate within seconds.</p>
+        <ul class="tc-steps">
+          <li>Go to a sink and run cold water</li>
+          <li>Splash it on your face or hold your wrists under</li>
+          <li>Take a slow breath as you feel the temperature shift</li>
+          <li>Repeat until you feel your body settle</li>
+        </ul>
+        <span class="tc-badge">✦ good for: panic · intense anger</span>
+      </div>
+
+      <div class="ek-technique-card" data-cat="mind">
+        <div class="tc-top">
+          <span class="tc-icon">🌊</span>
+          <div class="tc-title-block">
+            <p class="tc-tag">mind-based</p>
+            <h3 class="tc-title">Emotion Surfing</h3>
+          </div>
+        </div>
+        <p>From Dialectical Behaviour Therapy (DBT) — emotions are waves, not permanent states. You don't have to stop them, just ride them.</p>
+        <ul class="tc-steps">
+          <li>Notice the emotion without judging it</li>
+          <li>Observe where it lives in your body</li>
+          <li>Watch it rise — and know it will fall</li>
+          <li>Let it move through you like a wave</li>
+        </ul>
+        <span class="tc-badge">✦ good for: intense emotions · sadness</span>
+      </div>
+
+      <div class="ek-technique-card" data-cat="ground">
+        <div class="tc-top">
+          <span class="tc-icon">🦶</span>
+          <div class="tc-title-block">
+            <p class="tc-tag">grounding</p>
+            <h3 class="tc-title">Feet on the Floor</h3>
+          </div>
+        </div>
+        <p>One of the simplest, most effective grounding techniques for highly sensitive people who get caught in emotional spirals.</p>
+        <ul class="tc-steps">
+          <li>Sit or stand with both feet flat on the ground</li>
+          <li>Press down gently — feel the floor beneath you</li>
+          <li>Notice the temperature, texture, solidity</li>
+          <li>Remind yourself: "I am here. I am safe. This will pass."</li>
+        </ul>
+        <span class="tc-badge">✦ good for: spiraling · dissociation</span>
+      </div>
+
+      <div class="ek-technique-card" data-cat="breathe">
+        <div class="tc-top">
+          <span class="tc-icon">😮‍💨</span>
+          <div class="tc-title-block">
+            <p class="tc-tag">breathing</p>
+            <h3 class="tc-title">Physiological Sigh</h3>
+          </div>
+        </div>
+        <p>Dr. Andrew Huberman's research shows this double-inhale breath is the fastest way to reduce physiological stress in real time.</p>
+        <ul class="tc-steps">
+          <li>Take a full inhale through your nose</li>
+          <li>At the top, sniff in a small extra inhale</li>
+          <li>Now exhale slowly and completely through your mouth</li>
+          <li>Feel your body drop as you breathe out</li>
+        </ul>
+        <span class="tc-badge">✦ good for: instant calm · stress spikes</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="ek-section section-alt" aria-labelledby="h-checklist">
+  <div class="section-inner">
+    <p class="section-label"><span>✅</span> daily check-in</p>
+    <h2 class="section-h" id="h-checklist">your gentle <em>self-care checklist.</em></h2>
+    <p class="section-desc" style="margin-bottom:2.5rem;">Small acts of care add up. Check off what you've already done today — no pressure, no judgment.</p>
+
+    <div class="checklist-grid">
+      <div>
+        <h3>body care</h3>
+        <label class="check-item">
+          <input type="checkbox" name="check-0">
+          <label class="check-label">Drank enough water today 💧</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="check-1">
+          <label class="check-label">Ate something nourishing 🍃</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="check-2">
+          <label class="check-label">Moved my body, even a little 🚶</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="check-3">
+          <label class="check-label">Got some fresh air or sunlight 🌤</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="check-4">
+          <label class="check-label">Rested when I needed to 🛌</label>
+        </label>
+      </div>
+      <div>
+        <h3>emotional care</h3>
+        <label class="check-item">
+          <input type="checkbox" name="check-5">
+          <label class="check-label">Acknowledged how I'm feeling today 💚</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="check-6">
+          <label class="check-label">Practiced one regulation technique 🌬</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="check-7">
+          <label class="check-label">Set a boundary that felt right 🌿</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="check-8">
+          <label class="check-label">Spent time in quiet or solitude 🌙</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="check-9">
+          <label class="check-label">Was kind to myself in a hard moment 🫂</label>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ek-section" id="faq" aria-labelledby="h-faq">
+  <div class="section-inner">
+    <p class="section-label"><span>❓</span> frequently asked questions</p>
+    <h2 class="section-h" id="h-faq">am I really <em>too sensitive?</em></h2>
+    <p class="section-desc" style="margin-bottom:2.5rem;">Questions we hear often — answered with the honesty and gentleness you deserve.</p>
+
+    <div class="faq-list">
+      <details>
+        <summary>Am I too sensitive for my own good?</summary>
+        <div class="faq-a">No — but you may be using your sensitivity without enough support. Being highly sensitive means your nervous system processes the world more deeply than average. That's a neurological trait, not a character flaw. The challenge isn't your sensitivity; it's living in a world that wasn't designed with HSPs in mind. <strong>Your feelings are valid. Your intensity is real. And you are not too much.</strong></div>
+      </details>
+      <details>
+        <summary>Why do I cry so easily compared to others?</summary>
+        <div class="faq-a">HSPs have more active mirror neurons and stronger emotional reactivity in the brain. Crying isn't weakness — it's your body processing emotional information that others might simply not register at the same depth. You feel what others skim over. <strong>That's not a problem to fix. That's a depth of feeling most people never experience.</strong></div>
+      </details>
+      <details>
+        <summary>Is being highly sensitive the same as having anxiety?</summary>
+        <div class="faq-a">Not exactly. High sensitivity is a neutral trait — it's how your nervous system is wired. Anxiety is a response that can develop when an HSP doesn't have adequate coping tools or a supportive environment. Many HSPs do experience anxiety, but <strong>sensitivity itself is not a disorder</strong>. It exists across cultures, genders, and species — it's been found in over 100 animal species.</div>
+      </details>
+      <details>
+        <summary>Can I become less sensitive over time?</summary>
+        <div class="faq-a">Sensitivity is largely innate — it's part of your nervous system's wiring. However, <strong>you can absolutely build resilience</strong> — the ability to feel deeply without being destabilised. Therapy, emotional literacy, self-care practices, and environments that honor your needs can transform sensitivity from a vulnerability into a genuine superpower.</div>
+      </details>
+      <details>
+        <summary>Why do I need so much alone time to recover?</summary>
+        <div class="faq-a">Because your nervous system takes in more data than most. Social interactions, sensory input, emotional currents — you process all of it deeply. Alone time isn't antisocial; it's <strong>essential maintenance for your system</strong>. Think of it like charging a phone that uses more battery than average. You need more charge time, not a new phone.</div>
+      </details>
+      <details>
+        <summary>How do I explain my sensitivity to people who don't understand?</summary>
+        <div class="faq-a">Try this: "I process things more deeply than most people — emotions, sounds, social situations. It means I feel things strongly and sometimes need more recovery time. It's not personal and it's not something I can easily turn off." You don't owe anyone a full explanation. But <strong>naming it calmly helps others meet you where you are.</strong></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="ek-section section-alt" id="hotlines" aria-labelledby="h-hotlines">
+  <div class="section-inner">
+    <p class="section-label"><span>📞</span> malaysian mental health hotlines</p>
+    <h2 class="section-h" id="h-hotlines">you don't have to <em>carry this alone.</em></h2>
+    <p class="section-desc" style="margin-bottom:2rem;">If your emotions ever feel too heavy to carry alone, these are real people ready to listen — no judgment, no pressure.</p>
+
+    <div class="hotlines-intro">
+      <span class="hotlines-intro-icon">💙</span>
+      <div>
+        <h3>reaching out is an act of courage, not weakness.</h3>
+        <p>These services are free, confidential, and available to anyone in Malaysia. You don't need to be in crisis to call. Sometimes you just need someone to talk to — and that's enough reason.</p>
+      </div>
+    </div>
+
+    <div class="hotlines-grid">
+      <div class="ek-hotline-card">
+        <p class="ek-hotline-name">Befrienders Kuala Lumpur</p>
+        <p class="ek-hotline-desc">Emotional support for anyone in distress, facing a crisis, or feeling suicidal. Completely confidential.</p>
+        <div class="hotline-contact">
+          <span class="ek-hotline-number">03-7956 8145</span>
+          <span class="hotline-hours">Available 24 hours, 7 days a week</span>
+        </div>
+        <span class="hotline-tag">emotional support · crisis</span>
+      </div>
+
+      <div class="ek-hotline-card">
+        <p class="ek-hotline-name">Talian Kasih (KPWKM)</p>
+        <p class="ek-hotline-desc">National welfare helpline offering counselling, referrals, and crisis support including mental health concerns.</p>
+        <div class="hotline-contact">
+          <span class="ek-hotline-number">15999</span>
+          <span class="hotline-hours">24 hours daily · Free call</span>
+        </div>
+        <span class="hotline-tag">counselling · welfare · crisis</span>
+      </div>
+
+      <div class="ek-hotline-card">
+        <p class="ek-hotline-name">MIASA Helpline</p>
+        <p class="ek-hotline-desc">Mental Illness Awareness & Support Association — peer support for those living with or affected by mental illness.</p>
+        <div class="hotline-contact">
+          <span class="ek-hotline-number">03-2780 6803</span>
+          <span class="hotline-hours">Mon–Fri, 9am–5pm</span>
+        </div>
+        <span class="hotline-tag">peer support · mental illness</span>
+      </div>
+
+      <div class="ek-hotline-card">
+        <p class="ek-hotline-name">Relate Malaysia</p>
+        <p class="ek-hotline-desc">Provides counselling services and mental health support for young people and adults across Malaysia.</p>
+        <div class="hotline-contact">
+          <span class="ek-hotline-number">03-7785 5585</span>
+          <span class="hotline-hours">Mon–Fri, 9am–6pm</span>
+        </div>
+        <span class="hotline-tag">counselling · youth · adults</span>
+      </div>
+
+      <div class="ek-hotline-card">
+        <p class="ek-hotline-name">Hospital Selayang Psychiatric</p>
+        <p class="ek-hotline-desc">Crisis intervention and psychiatric emergency services available at public hospitals nationwide.</p>
+        <div class="hotline-contact">
+          <span class="ek-hotline-number">03-6126 3333</span>
+          <span class="hotline-hours">24-hour emergency services</span>
+        </div>
+        <span class="hotline-tag">psychiatric · emergency</span>
+      </div>
+
+      <div class="ek-hotline-card">
+        <p class="ek-hotline-name">Childline Malaysia (PROTECT)</p>
+        <p class="ek-hotline-desc">For children and young people aged 17 and below who need help, guidance, or someone to talk to.</p>
+        <div class="hotline-contact">
+          <span class="ek-hotline-number">1800-18-9999</span>
+          <span class="hotline-hours">Mon–Sat, 9am–5pm · Free call</span>
+        </div>
+        <span class="hotline-tag">youth · under 18</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ek-section">
+  <div class="section-inner">
+    <div class="reminder-banner">
+      <h3>"You don't have to earn rest. You don't have to justify needing support."</h3>
+      <p>You came here because you're doing the work of understanding yourself. That's not small. That's everything. We're glad you're here.</p>
+      <div class="reminder-btns">
+        <a href="journal.html" class="btn-white">✍️ write it out</a>
+        <a href="sub_page.html" class="btn-ghost">💌 need an affirmation?</a>
+      </div>
+    </div>
+  </div>
+</section>
+</article>
+
+</main>
+
+<footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <p class="footer-logo">it's okay to ugly cry</p>
+                    <p class="footer-note">you are allowed to feel everything.</p>
+                </div>
+
+                <div class="footer-group" aria-label="Project group">
+                    <p class="footer-group-label">designed &amp; developed by</p>
+                    <p class="footer-group-name">THE SAFE SPACE CLUB</p>
+                    <p class="footer-group-course">BIW20303 Web Design &middot; UTHM</p>
+                </div>
+
+                <address class="footer-hotline" aria-label="Crisis hotline">
+                    <span class="footer-hotline-label">Befrienders KL</span>
+                    <a href="tel:0376272929" class="footer-hotline-num" style="color:#fff; text-decoration:none;">03-7627 2929</a>
+                </address>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>all ratings are subjective - your cry level may vary.</p>
+            </div>
+        </footer>
+
+
+<script>
+
+// Mobile Menu Drawer Toggle Function
+ function toggleMenu(btn) {
+                const menu = document.getElementById('mobile-menu');
+                const isOpen = menu.classList.toggle('open');
+                btn.setAttribute('aria-expanded', isOpen);
+            }
+
+/* mood check-in */
+const moodTips = {
+  overwhelmed: "Try the 5-4-3-2-1 Grounding technique or Feet on the Floor below. They'll pull you out of your head and back into the present moment.",
+  anxious: "The 4-7-8 Breathing or Physiological Sigh are your best friends right now. Start with just one slow breath.",
+  sad: "Emotion Surfing was made for this. You don't need to fix the sadness — just ride it. And if you need to ugly cry, that's exactly what this space is for.",
+  numb: "Numbness is your nervous system protecting you. Try cold water on your wrists or the 5-4-3-2-1 technique to gently reconnect with your body.",
+  angry: "The Cold Water Reset is surprisingly effective. So is naming the feeling out loud — 'I am angry' reduces its hold faster than you'd think.",
+  tender: "You're in a soft, open place. A good moment for self-soothing touch or just sitting with the feeling and letting it be beautiful."
+};
+
+function setMood(mood, btn) {
+  document.querySelectorAll('.mpill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  const tip = document.getElementById('mood-tip-text');
+  tip.textContent = '💬 ' + moodTips[mood];
+  tip.classList.add('visible');
+}
+
+/* techniques filter */
+function filterTech(cat, btn) {
+  document.querySelectorAll('.filter-row .fpill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.ek-technique-card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+  });
+}
+
+/* faq accordion */
+/* FAQ uses native <details>/<summary> — no JS needed */
+/* Checklist uses native <input type="checkbox"> — no JS needed */
+</script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Journal Space</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="journal-page">
+<a href="#main-content" class="skip-link">skip to content</a>
+
+<header>
+            <nav class="navbar" aria-label="Main navigation">
+                <div class="navbar-inner">
+                    <a href="homepage.html" class="navbar-logo">
+                        <img src="images/logo.png" class="logo-img" alt="" />
+                        it's okay to <span>ugly cry</span>
+                    </a>
+
+                    <ul class="navbar-links" role="list">
+                        <li><a href="movie.html" ><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated</a></li>
+                        <li><a href="journal.html" class="active" aria-current="page"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal</a></li>
+                        <li><a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a></li>
+                        <li><a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a></li>
+                        <li><a href="emotional_kit.html" class="navbar-cta"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a></li>
+                    </ul>
+
+                    <button class="hamburger" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMenu(this)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div> 
+                
+                <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+                    <a href="homepage.html"><i class="fa-solid fa-house" aria-hidden="true"></i> home</a>
+                    <a href="movie.html"><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated movies</a>
+                    <a href="journal.html" aria-current="page"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal prompts</a>
+                    <a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a>
+                    <a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a>
+                    <a href="hsp_quiz.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> am i an HSP?</a>
+                    <a href="emotional_kit.html"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a>
+                </nav>
+            </nav>
+        </header>
+
+
+<section class="page-hero" aria-labelledby="journal-page-title">
+  <span class="label-tag"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i>journal prompts</span>
+  <h1 id="journal-page-title" class="page-title">your <em>journal</em><br/>space</h1>
+  <p>A quiet corner to write, reflect, and feel. Let a prompt guide you, or follow your own stream of consciousness — everything here is saved locally, just for you.</p>
+  <span id="entries-num" style="display:none">0</span>
+</section>
+
+<div class="hdivider"></div>
+
+<div class="body-wrap">
+  <article aria-label="journal space">
+  <main id="main-content">
+
+    <!-- Prompt Generator -->
+    <section class="prompt-section fade-up">
+      <p class="section-label">✨ today's prompt</p>
+      <div class="prompt-card">
+        <span class="prompt-tag" id="prompt-category-badge">reflection</span>
+        <p id="prompt-text">"What feeling have you been carrying lately that you haven't had space to put down?"</p>
+        <div class="prompt-foot">
+          <span class="prompt-category" id="prompt-category-text">emotional awareness</span>
+          <div style="display:flex;gap:0.6rem">
+            <button class="btn-ghost" id="btn-new-prompt">↻ new prompt</button>
+            <button class="btn-ghost" id="btn-use-prompt">use this ↓</button>
+          </div>
+        </div>
+      </div>
+      <div class="category-pills" id="category-pills">
+        <button class="cpill active" data-cat="all">all moods</button>
+        <button class="cpill" data-cat="reflection">🌊 reflection</button>
+        <button class="cpill" data-cat="gratitude">🌱 gratitude</button>
+        <button class="cpill" data-cat="processing">💧 processing</button>
+        <button class="cpill" data-cat="growth">🌸 growth</button>
+        <button class="cpill" data-cat="body">🫁 body &amp; senses</button>
+      </div>
+    </section>
+
+    <!-- Write Area -->
+    <section class="journal-section fade-up-2">
+      <p class="section-label">📝 write here</p>
+      <div class="mood-row">
+        <span class="mood-label">how are you feeling?</span>
+        <button class="mood-pill" data-mood="overwhelmed">😮‍💨 overwhelmed</button>
+        <button class="mood-pill" data-mood="sad">🥹 sad</button>
+        <button class="mood-pill" data-mood="calm">🌿 calm</button>
+        <button class="mood-pill" data-mood="anxious">😰 anxious</button>
+        <button class="mood-pill" data-mood="hopeful">🌤 hopeful</button>
+        <button class="mood-pill" data-mood="numb">🪨 numb</button>
+      </div>
+      <div class="journal-meta">
+        <span class="journal-date" id="journal-date"></span>
+        <span class="wordcount" id="wordcount">0 words</span>
+      </div>
+      <textarea class="journal-textarea" id="journal-input" placeholder="Start writing here… let it flow. There are no rules."></textarea>
+      <div class="journal-actions">
+        <button class="btn-solid" id="btn-save">💾 save entry</button>
+        <button class="btn-outline" id="btn-clear-draft">✕ clear draft</button>
+        <span class="char-hint" id="char-hint"></span>
+      </div>
+    </section>
+
+    <!-- Saved Entries -->
+    <section class="fade-up-3">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;flex-wrap:wrap;gap:0.5rem;">
+        <p class="section-label" style="margin:0">📚 your saved entries</p>
+      </div>
+      <div class="entries-list" id="entries-list">
+        <div class="no-entries">
+          <span>✍️</span>
+          Write your first entry above and hit <em>save entry</em> — it'll appear here, stored only on your device.
+        </div>
+      </div>
+    </section>
+
+  </main>
+  </article>
+
+  <aside class="sidebar">
+    <div class="s-card">
+      <div class="s-card-head">🔥 writing streak</div>
+      <div class="s-card-body">
+        <div class="streak-display">
+          <span class="streak-num" id="streak-num">0</span>
+          <span class="streak-unit">day streak</span>
+        </div>
+        <p class="streak-msg" id="streak-msg">Write today to start your streak! Even a few sentences counts.</p>
+        <div class="streak-dots" id="streak-dots"></div>
+      </div>
+    </div>
+    <div class="s-card">
+      <div class="s-card-head">💜 mood patterns</div>
+      <div class="s-card-body">
+        <div class="insight-list" id="insight-list">
+          <p style="font-family:var(--ff-body);font-style:italic;font-size:0.82rem;color:var(--text-muted);line-height:1.7;">Your mood patterns will appear here after a few saved entries.</p>
+        </div>
+      </div>
+    </div>
+    <div class="s-card">
+      <div class="s-card-head">🌿 gentle reminder</div>
+      <div class="s-card-body">
+        <p class="tip-text" id="tip-text">"You don't have to write well. You just have to write honestly."</p>
+        <p class="tip-source" id="tip-source">journaling wisdom</p>
+      </div>
+    </div>
+    <div class="s-card">
+      <div class="s-card-head">🗂 manage entries</div>
+      <div class="s-card-body">
+        <div class="util-btns">
+          <button class="util-btn" id="btn-export">📥 export as .txt</button>
+          <button class="util-btn danger" id="btn-clear-all">🗑 clear all entries</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <p class="footer-logo">it's okay to ugly cry</p>
+                    <p class="footer-note">you are allowed to feel everything.</p>
+                </div>
+
+                <div class="footer-group" aria-label="Project group">
+                    <p class="footer-group-label">designed &amp; developed by</p>
+                    <p class="footer-group-name">THE SAFE SPACE CLUB</p>
+                    <p class="footer-group-course">BIW20303 Web Design &middot; UTHM</p>
+                </div>
+
+                <address class="footer-hotline" aria-label="Crisis hotline">
+                    <span class="footer-hotline-label">Befrienders KL</span>
+                    <a href="tel:0376272929" class="footer-hotline-num" style="color:#fff; text-decoration:none;">03-7627 2929</a>
+                </address>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>all ratings are subjective - your cry level may vary.</p>
+            </div>
+        </footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+function toggleMenu(btn) {
+                const menu = document.getElementById('mobile-menu');
+                const isOpen = menu.classList.toggle('open');
+                btn.setAttribute('aria-expanded', isOpen);
+            }
+
+/* ── DATA ── */
+const PROMPTS = [
+  { text: "What feeling have you been carrying lately that you haven't had space to put down?", cat: "reflection", label: "emotional awareness" },
+  { text: "Describe your week in three colours. What does each colour represent?", cat: "reflection", label: "emotional awareness" },
+  { text: "What does your body feel like right now? Where do you hold tension?", cat: "reflection", label: "somatic check-in" },
+  { text: "What's one thing you said yes to this week that you wish you had said no to?", cat: "reflection", label: "boundaries" },
+  { text: "When did you last feel truly safe? What made it feel that way?", cat: "reflection", label: "safety & belonging" },
+  { text: "If your feelings today were weather, what would the forecast look like?", cat: "reflection", label: "emotional metaphor" },
+  { text: "What story are you telling yourself about yourself right now — and is it kind?", cat: "reflection", label: "inner narrative" },
+  { text: "Name three small things that softened today, even slightly.", cat: "gratitude", label: "small joys" },
+  { text: "Who is someone who has never made you feel 'too much'? Write about them.", cat: "gratitude", label: "safe relationships" },
+  { text: "What's something your sensitivity has given you that you're grateful for?", cat: "gratitude", label: "HSP gifts" },
+  { text: "Describe a moment this week when the world felt genuinely beautiful.", cat: "gratitude", label: "wonder" },
+  { text: "Is there something you need to say out loud — even just here, even just to yourself?", cat: "processing", label: "releasing" },
+  { text: "What are you afraid to admit you're still hurting about?", cat: "processing", label: "grief & healing" },
+  { text: "Write a letter to the version of yourself from six months ago.", cat: "processing", label: "letter to self" },
+  { text: "What emotion keeps showing up uninvited? What might it be trying to tell you?", cat: "processing", label: "messages from feeling" },
+  { text: "What would you say if you knew no one would ever read this?", cat: "processing", label: "free expression" },
+  { text: "What's one boundary you want to protect more fiercely this week?", cat: "growth", label: "boundaries" },
+  { text: "Where in your life are you still waiting for permission to be yourself?", cat: "growth", label: "authenticity" },
+  { text: "What does 'enough' look and feel like for you?", cat: "growth", label: "self-worth" },
+  { text: "Describe the version of you who is fully rested and fully resourced. What do they need?", cat: "growth", label: "self-care vision" },
+  { text: "What sensory experience recently made you feel most alive or most overwhelmed?", cat: "body", label: "sensory world" },
+  { text: "Where in your body do you feel joy? Where do you feel grief?", cat: "body", label: "body mapping" },
+  { text: "Describe a smell, sound, or texture that brings you instant comfort.", cat: "body", label: "soothing senses" },
+];
+
+const TIPS = [
+  { text: "You don't have to write well. You just have to write honestly.", src: "journaling wisdom" },
+  { text: "Even ten minutes of honest writing can shift something that hours of overthinking cannot.", src: "for sensitive writers" },
+  { text: "Your feelings are not a burden. They are data, and they are asking to be witnessed.", src: "HSP self-care" },
+  { text: "You are allowed to write the same thing over and over until it loses its power over you.", src: "processing through words" },
+  { text: "There is no wrong way to feel. There is only this moment, and these words.", src: "gentle reminder" },
+];
+
+const MOOD_EMOJI = { overwhelmed:'😮‍💨', sad:'🥹', calm:'🌿', anxious:'😰', hopeful:'🌤', numb:'🪨' };
+
+/* ── STATE ── */
+let currentCat = "all";
+let currentMood = null;
+let currentPromptText = PROMPTS[0].text;
+let entries = [];
+
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded', function() {
+  // date
+  var d = new Date();
+  document.getElementById('journal-date').textContent =
+    d.toLocaleDateString('en-MY', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+  // tip
+  var t = TIPS[Math.floor(Math.random() * TIPS.length)];
+  document.getElementById('tip-text').textContent = '"' + t.text + '"';
+  document.getElementById('tip-source').textContent = t.src;
+
+  loadEntries();
+  renderStreak();
+  renderMoodInsights();
+  generatePrompt(true);
+
+  // hamburger handled by inline onclick="toggleMenu(this)" — no extra listener needed
+
+  // prompt buttons
+  document.getElementById('btn-new-prompt').addEventListener('click', function() { generatePrompt(false); });
+  document.getElementById('btn-use-prompt').addEventListener('click', usePrompt);
+
+  // category pills
+  document.getElementById('category-pills').addEventListener('click', function(e) {
+    var btn = e.target.closest('.cpill');
+    if (!btn) return;
+    currentCat = btn.dataset.cat;
+    document.querySelectorAll('.cpill').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    generatePrompt(false);
+  });
+
+  // mood pills
+  document.querySelector('.mood-row').addEventListener('click', function(e) {
+    var btn = e.target.closest('.mood-pill');
+    if (!btn) return;
+    document.querySelectorAll('.mood-pill').forEach(function(b) { b.classList.remove('selected'); });
+    if (currentMood === btn.dataset.mood) {
+      currentMood = null;
+    } else {
+      btn.classList.add('selected');
+      currentMood = btn.dataset.mood;
+    }
+  });
+
+  // textarea
+  document.getElementById('journal-input').addEventListener('input', function() { onType(this); });
+
+  // save / clear
+  document.getElementById('btn-save').addEventListener('click', saveEntry);
+  document.getElementById('btn-clear-draft').addEventListener('click', clearDraft);
+
+  // export / clear all
+  document.getElementById('btn-export').addEventListener('click', exportEntries);
+  document.getElementById('btn-clear-all').addEventListener('click', confirmClearAll);
+
+  // entry list (delegated for edit/delete)
+  document.getElementById('entries-list').addEventListener('click', function(e) {
+    var editBtn = e.target.closest('.icon-btn:not(.delete)');
+    var delBtn  = e.target.closest('.icon-btn.delete');
+    if (editBtn) { editEntry(Number(editBtn.dataset.id)); }
+    if (delBtn)  { deleteEntry(Number(delBtn.dataset.id)); }
+  });
+});
+
+/* ── PROMPT ── */
+function getPool() {
+  return currentCat === 'all' ? PROMPTS : PROMPTS.filter(function(p) { return p.cat === currentCat; });
+}
+
+function generatePrompt(init) {
+  var pool = getPool();
+  var el = document.getElementById('prompt-text');
+  if (!init) {
+    el.classList.add('fade-out');
+    setTimeout(function() { setPrompt(pool, el); }, 300);
+  } else {
+    setPrompt(pool, el);
+  }
+}
+
+function setPrompt(pool, el) {
+  var p = pool[Math.floor(Math.random() * pool.length)];
+  currentPromptText = p.text;
+  el.textContent = '"' + p.text + '"';
+  document.getElementById('prompt-category-badge').textContent = p.cat;
+  document.getElementById('prompt-category-text').textContent = p.label;
+  el.classList.remove('fade-out');
+}
+
+function usePrompt() {
+  var ta = document.getElementById('journal-input');
+  var existing = ta.value.trim();
+  var insert = 'Prompt: ' + currentPromptText + '\n\n';
+  ta.value = existing ? existing + '\n\n' + insert : insert;
+  ta.focus();
+  ta.setSelectionRange(ta.value.length, ta.value.length);
+  onType(ta);
+  ta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  showToast('✍️ Prompt added — start writing!');
+}
+
+/* ── TYPING ── */
+function onType(ta) {
+  var text = ta.value.trim();
+  var words = text ? text.split(/\s+/).length : 0;
+  var wc = document.getElementById('wordcount');
+  wc.textContent = words + ' word' + (words !== 1 ? 's' : '');
+  wc.classList.toggle('active', words > 0);
+  var hints = [[0,''], [10,'✨ keep going…'], [50,'💚 you\'re in the flow'], [100,'🌊 deep dive — well done'], [200,'💎 beautiful — a full reflection']];
+  var hint = '';
+  for (var i = 0; i < hints.length; i++) { if (words >= hints[i][0]) hint = hints[i][1]; }
+  document.getElementById('char-hint').textContent = hint;
+}
+
+/* ── SAVE / LOAD ── */
+function loadEntries() {
+  try { entries = JSON.parse(localStorage.getItem('uglycry_journal_entries') || '[]'); }
+  catch(e) { entries = []; }
+  renderEntries();
+  document.getElementById('entries-num').textContent = entries.length;
+}
+
+function saveEntry() {
+  var ta = document.getElementById('journal-input');
+  var text = ta.value.trim();
+  if (!text) { showToast('✏️ Write something first!'); return; }
+  var entry = { id: Date.now(), date: new Date().toISOString(), text: text, mood: currentMood, prompt: currentPromptText };
+  entries.unshift(entry);
+  persistEntries();
+  ta.value = '';
+  onType(ta);
+  currentMood = null;
+  document.querySelectorAll('.mood-pill').forEach(function(b) { b.classList.remove('selected'); });
+  document.getElementById('char-hint').textContent = '';
+  renderEntries();
+  renderMoodInsights();
+  renderStreak();
+  document.getElementById('entries-num').textContent = entries.length;
+  showToast('💾 Entry saved!');
+}
+
+function clearDraft() {
+  var ta = document.getElementById('journal-input');
+  if (!ta.value.trim()) return;
+  ta.value = '';
+  onType(ta);
+  document.getElementById('char-hint').textContent = '';
+}
+
+function deleteEntry(id) {
+  entries = entries.filter(function(e) { return e.id !== id; });
+  persistEntries();
+  renderEntries();
+  renderMoodInsights();
+  renderStreak();
+  document.getElementById('entries-num').textContent = entries.length;
+  showToast('🗑 Entry removed');
+}
+
+function editEntry(id) {
+  var entry = entries.find(function(e) { return e.id === id; });
+  if (!entry) return;
+  var ta = document.getElementById('journal-input');
+  ta.value = entry.text;
+  onType(ta);
+  if (entry.mood) {
+    var btn = document.querySelector('.mood-pill[data-mood="' + entry.mood + '"]');
+    if (btn) {
+      document.querySelectorAll('.mood-pill').forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      currentMood = entry.mood;
+    }
+  }
+  deleteEntry(id);
+  ta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  showToast('📝 Entry loaded for editing');
+}
+
+function persistEntries() {
+  try { localStorage.setItem('uglycry_journal_entries', JSON.stringify(entries)); } catch(e) { console.warn('Storage unavailable – entries cannot be saved in this browser.'); alert('⚠️ Your entry was saved this session, but your browser\'s storage is unavailable (e.g. private/incognito mode). Entries won\'t persist after you close the tab.'); }
+}
+
+function confirmClearAll() {
+  if (entries.length === 0) { showToast('No entries to clear!'); return; }
+  if (confirm('Delete all ' + entries.length + ' entries? This can\'t be undone.')) {
+    entries = [];
+    persistEntries();
+    renderEntries();
+    renderMoodInsights();
+    renderStreak();
+    document.getElementById('entries-num').textContent = 0;
+    showToast('🗑 All entries cleared');
+  }
+}
+
+/* ── RENDER ENTRIES ── */
+function renderEntries() {
+  var list = document.getElementById('entries-list');
+  if (!entries.length) {
+    list.innerHTML = '<div class="no-entries"><span>✍️</span>Write your first entry above and hit <em>save entry</em> — it\'ll appear here, stored only on your device.</div>';
+    return;
+  }
+  list.innerHTML = entries.map(function(e) {
+    var d = new Date(e.date);
+    var dateStr = d.toLocaleDateString('en-MY', { weekday:'short', day:'numeric', month:'short', year:'numeric' });
+    var timeStr = d.toLocaleTimeString('en-MY', { hour:'2-digit', minute:'2-digit' });
+    var words = e.text.trim().split(/\s+/).length;
+    var moodEmoji = e.mood ? (MOOD_EMOJI[e.mood] || '') : '';
+    var promptSnip = e.prompt ? '<p class="entry-prompt">&#8627; ' + e.prompt.slice(0,80) + (e.prompt.length > 80 ? '…' : '') + '</p>' : '';
+    var moodBadge = e.mood ? '<span class="entry-mood-badge">' + moodEmoji + ' ' + e.mood + '</span>' : '';
+    return '<div class="entry-card">' +
+      '<div class="entry-top">' +
+        '<div>' +
+          '<div class="entry-meta"><span>' + dateStr + ', ' + timeStr + '</span><span>·</span><span>' + words + ' words</span>' + moodBadge + '</div>' +
+          promptSnip +
+        '</div>' +
+        '<div class="entry-actions">' +
+          '<button class="icon-btn" data-id="' + e.id + '" title="edit">✏️</button>' +
+          '<button class="icon-btn delete" data-id="' + e.id + '" title="delete">🗑</button>' +
+        '</div>' +
+      '</div>' +
+      '<p class="entry-preview">' + escapeHtml(e.text) + '</p>' +
+    '</div>';
+  }).join('');
+}
+
+function escapeHtml(t) {
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ── STREAK ── */
+function renderStreak() {
+  var today = new Date().toDateString();
+  var days = [];
+  entries.forEach(function(e) {
+    var ds = new Date(e.date).toDateString();
+    if (days.indexOf(ds) === -1) days.push(ds);
+  });
+  var streak = 0;
+  var check = new Date();
+  if (days.indexOf(check.toDateString()) === -1) check.setDate(check.getDate() - 1);
+  while (days.indexOf(check.toDateString()) !== -1) {
+    streak++;
+    check.setDate(check.getDate() - 1);
+  }
+  if (days.indexOf(today) !== -1) streak = Math.max(streak, 1);
+  document.getElementById('streak-num').textContent = streak;
+  var msgs = [
+    "Write today to start your streak! Even a few sentences counts.",
+    "You showed up. That matters more than you know. 🌿",
+    "Two days in a row — you're building something beautiful.",
+    "Consistency is self-care. Keep going. 💚",
+    "A full week of turning inward — you should feel proud. 🌸",
+    "This is becoming a practice. A real one. ✨"
+  ];
+  document.getElementById('streak-msg').textContent = msgs[Math.min(streak, msgs.length - 1)];
+  var dotsEl = document.getElementById('streak-dots');
+  dotsEl.innerHTML = '';
+  var dayLabels = ['S','M','T','W','T','F','S'];
+  for (var i = 6; i >= 0; i--) {
+    var d = new Date();
+    d.setDate(d.getDate() - i);
+    var written = days.indexOf(d.toDateString()) !== -1;
+    var isToday = d.toDateString() === today;
+    var dot = document.createElement('div');
+    dot.className = 'streak-dot' + (isToday && written ? ' today' : written ? ' done' : '');
+    dot.title = d.toDateString();
+    dot.textContent = written ? '✓' : dayLabels[d.getDay()];
+    dotsEl.appendChild(dot);
+  }
+}
+
+/* ── MOOD INSIGHTS ── */
+function renderMoodInsights() {
+  var il = document.getElementById('insight-list');
+  if (entries.length < 3) {
+    il.innerHTML = '<p style="font-family:var(--ff-body);font-style:italic;font-size:0.82rem;color:var(--text-muted);line-height:1.7;">Your mood patterns will appear here after a few saved entries.</p>';
+    return;
+  }
+  var counts = {};
+  entries.forEach(function(e) { if (e.mood) counts[e.mood] = (counts[e.mood] || 0) + 1; });
+  var total = Object.values(counts).reduce(function(a,b) { return a+b; }, 0);
+  if (!total) {
+    il.innerHTML = '<p style="font-family:var(--ff-body);font-style:italic;font-size:0.82rem;color:var(--text-muted);">Tag your mood when saving to see patterns here.</p>';
+    return;
+  }
+  var sorted = Object.entries(counts).sort(function(a,b) { return b[1]-a[1]; }).slice(0,5);
+  il.innerHTML = sorted.map(function(pair) {
+    var mood = pair[0], n = pair[1];
+    var pct = Math.round((n/total)*100);
+    return '<div class="insight-row"><span>' + (MOOD_EMOJI[mood]||'') + ' ' + mood + '</span>' +
+      '<div class="insight-bar-wrap"><div class="insight-bar" style="width:' + pct + '%"></div></div>' +
+      '<span class="insight-pct">' + pct + '%</span></div>';
+  }).join('');
+}
+
+/* ── EXPORT ── */
+function exportEntries() {
+  if (!entries.length) { showToast('No entries to export!'); return; }
+  var lines = entries.map(function(e) {
+    var d = new Date(e.date).toLocaleString('en-MY');
+    return '[' + d + ']' + (e.mood ? ' | Mood: ' + e.mood : '') + '\nPrompt: ' + (e.prompt || 'none') + '\n\n' + e.text + '\n\n' + '─'.repeat(40);
+  }).join('\n\n');
+  var blob = new Blob(["IT'S OKAY TO UGLY CRY — Journal Export\n" + '═'.repeat(40) + '\n\n' + lines], { type: 'text/plain' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'journal-' + new Date().toISOString().slice(0,10) + '.txt';
+  a.click();
+  showToast('📥 Journal exported!');
+}
+
+/* ── TOAST ── */
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(function() { t.classList.remove('show'); }, 2800);
+}
+</script>
+</body>
+</html>
