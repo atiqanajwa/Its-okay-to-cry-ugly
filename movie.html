@@ -19,15 +19,16 @@
         <header>
             <nav class="navbar" aria-label="Main navigation">
                 <div class="navbar-inner">
-                    <a href="index.html" class="navbar-logo">
+                    <a href="homepage.html" class="navbar-logo">
                         <img src="images/logo.png" class="logo-img" alt="" />
                         it's okay to <span>ugly cry</span>
                     </a>
 
-                    <ul class="navbar-links" role="list">
-                        <li><a href="movie.html" class="active" aria-current="page"><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated</a></li>
+                                        <ul class="navbar-links" role="list">
+                        <li><a href="movie.html" class="active" aria-current="page"><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated movies</a></li>
                         <li><a href="journal.html"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal</a></li>
                         <li><a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a></li>
+                        <li><a href="hsp_quiz.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> am i an HSP?</a></li>
                         <li><a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a></li>
                         <li><a href="emotional_kit.html" class="navbar-cta"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a></li>
                     </ul>
@@ -40,12 +41,12 @@
                 </div> 
                 
                 <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-                    <a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> home</a>
+                    <a href="homepage.html"><i class="fa-solid fa-house" aria-hidden="true"></i> home</a>
                     <a href="movie.html" aria-current="page"><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated movies</a>
-                    <a href="journal.html"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal prompts</a>
+                    <a href="journal.html"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal</a>
                     <a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a>
-                    <a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a>
                     <a href="hsp_quiz.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> am i an HSP?</a>
+                    <a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a>
                     <a href="emotional_kit.html"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a>
                 </nav>
             </nav>
@@ -94,21 +95,12 @@
                 </div>
 
                 <div class="filter-area" role="group" aria-label="Filter movies">
-                    <p class="filter-label">filter by tissue count</p>
-                    <div class="filter-row" role="group" aria-label="Filter by tissue count">
-                        <button class="filter-btn active" onclick="filterCry('all', this)" aria-pressed="true">all movies</button>
-                        <button class="filter-btn" onclick="filterCry('5', this)" aria-pressed="false">🧻🧻🧻🧻🧻 only</button>
-                        <button class="filter-btn" onclick="filterCry('4', this)" aria-pressed="false">🧻🧻🧻🧻 + </button>
-                        <button class="filter-btn" onclick="filterCry('3', this)" aria-pressed="false">🧻🧻🧻 + </button>
-                    </div>
-                    
                     <p class="filter-label" style="margin-top:0.875rem;">filter by genre</p>
                     <div class="filter-row" role="group" aria-label="Filter by genre">
-                        <button class="filter-btn active" onClick="filterGenre('all', this)" aria-pressed="true">all genres</button>
-                        <button class="filter-btn" onClick="filterGenre('drama', this)" aria-pressed="false">drama</button>
-                        <button class="filter-btn" onClick="filterGenre('animation', this)" aria-pressed="false">animation</button>
-                        <button class="filter-btn" onClick="filterGenre('romance', this)" aria-pressed="false">romance</button>
-                        <button class="filter-btn" onClick="filterGenre('anime', this)" aria-pressed="false">anime</button>
+                        <button class="filter-btn active" onclick="filterGenre('all', this)" aria-pressed="true">all genres</button>
+                        <button class="filter-btn" onclick="filterGenre('animation', this)" aria-pressed="false">animation</button>
+                        <button class="filter-btn" onclick="filterGenre('drama', this)" aria-pressed="false">drama</button>
+                        <button class="filter-btn" onclick="filterGenre('anime', this)" aria-pressed="false">anime</button>
                     </div>
                 </div>
 
@@ -151,12 +143,12 @@
                 </div>
 
                 <section class="grid-3" id="movies-grid" aria-label="Movie list">
-                    
+
                     <article class="movie-card" data-cry="5" data-genre="animation" aria-label="Coco, 5 out of 5 tissues">
                         <div class="movie-poster-wrap">
-                            <div class="movie-poster" style="background:#e8f2ed;" aria-hidden="true"><i class="fa-solid fa-music" style="color:#2d4a3e; font-size:2rem;"></i></div>
+                            <img src="images/coco.png" alt="Hand-drawn illustration of Miguel from Coco playing guitar on a marigold field under fireworks" class="movie-poster-img">
                             <div class="movie-overlay" aria-hidden="true">
-                                <p class="movie-overlay-text">"Remember Me" plays. Your grandparent's face flashes in your mind. You are not prepared.</p>
+                                <p class="movie-overlay-text">Miguel crosses into the Land of the Dead and learns that being forgotten is the only true death. Bring tissues and call your grandmother.</p>
                             </div>
                         </div>
                         <div class="movie-body">
@@ -165,33 +157,7 @@
                                 <span class="movie-year">2017</span>
                             </div>
                             <span class="badge badge-animation">animation &middot; family</span>
-                            <p class="movie-desc">Pixar committed a crime against human emotions and got away with it.</p>
-                            <div class="tissue-row" aria-label="5 out of 5 tissues">
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <span class="tissue-score">5/5 tissues</span>
-                            </div>
-                            <span class="badge-warn" style="margin-top:0.5rem; display:inline-block;">⚠ the last 15 minutes are illegal</span>
-                        </div>
-                    </article>
-
-                    <article class="movie-card" data-cry="5" data-genre="drama" aria-label="The Pursuit of Happyness, 5 out of 5 tissues">
-                        <div class="movie-poster-wrap">
-                            <div class="movie-poster" style="background:#fdf0ec;" aria-hidden="true"><i class="fa-solid fa-briefcase" style="color:#C0614A;font-size:2rem;"></i></div>
-                            <div class="movie-overlay" aria-hidden="true">
-                                <p class="movie-overlay-text">The bathroom scene. The job interview. The ending. A father's love that refuses to break.</p>
-                            </div>
-                        </div>
-                        <div class="movie-body">
-                            <div class="movie-title-row">
-                                <h3 class="movie-title">The Pursuit of Happyness</h3>
-                                <span class="movie-year">2006</span>
-                            </div>
-                            <span class="badge badge-drama">drama &middot; biographical</span>
-                            <p class="movie-desc">Will Smith carrying his son through homelessness with nothing but hope.</p>
+                            <p class="movie-desc">Remember me, though I have to say goodbye. The ending will undo you.</p>
                             <div class="tissue-row" aria-label="5 out of 5 tissues">
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
@@ -200,13 +166,12 @@
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
                                 <span class="tissue-score">5/5</span>
                             </div>
-                            <span class="badge-warn" style="margin-top:0.375rem;display:inline-block;">⚠ ugly cry guaranteed</span>
                         </div>
                     </article>
 
                     <article class="movie-card" data-cry="5" data-genre="animation" aria-label="Grave of the Fireflies, 5 out of 5 tissues">
                         <div class="movie-poster-wrap">
-                            <div class="movie-poster" style="background:#f5f0f8;" aria-hidden="true"><i class="fa-solid fa-heart-crack" style="color:#6a4a8a;font-size:2rem;"></i></div>
+                            <img src="images/gravefireflies.png" alt="Hand-drawn illustration of two siblings surrounded by glowing fireflies at night" class="movie-poster-img">
                             <div class="movie-overlay" aria-hidden="true">
                                 <p class="movie-overlay-text">Two siblings surviving wartime Japan. Possibly the saddest film ever made. Not to be watched alone.</p>
                             </div>
@@ -217,7 +182,7 @@
                                 <span class="movie-year">1988</span>
                             </div>
                             <span class="badge badge-animation">animation &middot; war</span>
-                            <p class="movie-desc">Studio Ghibli decided to ruin everyone's emotional stability permanently.</p>
+                            <p class="movie-desc">A masterpiece that will leave you hollow. Watch it once. You will never forget it.</p>
                             <div class="tissue-row" aria-label="5 out of 5 tissues">
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
@@ -226,15 +191,14 @@
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
                                 <span class="tissue-score">5/5</span>
                             </div>
-                            <span class="badge-warn" style="margin-top:0.375rem;display:inline-block;">⚠ allow 24hrs recovery time</span>
                         </div>
                     </article>
 
                     <article class="movie-card" data-cry="4" data-genre="animation" aria-label="Up, 4 out of 5 tissues">
                         <div class="movie-poster-wrap">
-                            <div class="movie-poster" style="background:#e8f2ed;" aria-hidden="true"><i class="fa-solid fa-house" style="color:#2d4a3e;font-size:2rem;"></i></div>
+                            <img src="images/up.png" alt="Hand-drawn illustration of the Up movie house lifted by colourful balloons" class="movie-poster-img">
                             <div class="movie-overlay" aria-hidden="true">
-                                <p class="movie-overlay-text">The first 10 minutes contain an entire lifetime. Pixar weaponised montage against humanity.</p>
+                                <p class="movie-overlay-text">A love story told in 4 minutes. Your heart will never recover from the opening sequence.</p>
                             </div>
                         </div>
                         <div class="movie-body">
@@ -255,36 +219,11 @@
                         </div>
                     </article>
 
-                    <article class="movie-card" data-cry="4" data-genre="romance" aria-label="A Walk to Remember, 4 out of 5 tissues">
-                        <div class="movie-poster-wrap">
-                            <div class="movie-poster" style="background:#fdf0ec;" aria-hidden="true"><i class="fa-solid fa-heart" style="color:#C0614A;font-size:2rem;"></i></div>
-                            <div class="movie-overlay" aria-hidden="true">
-                                <p class="movie-overlay-text">First love meets terminal illness. Every HSP who watched this as a teenager is still healing.</p>
-                            </div>
-                        </div>
-                        <div class="movie-body">
-                            <div class="movie-title-row">
-                                <h3 class="movie-title">A Walk to Remember</h3>
-                                <span class="movie-year">2002</span>
-                            </div>
-                            <span class="badge badge-romance">romance &middot; drama</span>
-                            <p class="movie-desc">Mandy Moore playing the role that destroyed a generation of teenagers.</p>
-                            <div class="tissue-row" aria-label="4 out of 5 tissues">
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-empty" aria-hidden="true"></i>
-                                <span class="tissue-score">4/5</span>
-                            </div>
-                        </div>
-                    </article>
-
                     <article class="movie-card" data-cry="4" data-genre="animation" aria-label="Inside Out, 4 out of 5 tissues">
                         <div class="movie-poster-wrap">
-                            <div class="movie-poster" style="background:#fff8e8;" aria-hidden="true"><i class="fa-solid fa-masks-theater" style="color:#a07820;font-size:2rem;"></i></div>
+                            <img src="images/insideOut.png" alt="Hand-drawn illustration of Sadness from Inside Out surrounded by glowing emotion orbs" class="movie-poster-img">
                             <div class="movie-overlay" aria-hidden="true">
-                                <p class="movie-overlay-text">About emotions and how sadness is just as important as joy. The most HSP movie ever made without knowing it.</p>
+                                <p class="movie-overlay-text">Pixar teaches you that sadness has a purpose. You will cry and feel oddly okay about it.</p>
                             </div>
                         </div>
                         <div class="movie-body">
@@ -293,7 +232,7 @@
                                 <span class="movie-year">2015</span>
                             </div>
                             <span class="badge badge-animation">animation &middot; emotional</span>
-                            <p class="movie-desc">Pixar literally made a movie validating sadness. For us.</p>
+                            <p class="movie-desc">Sadness is not the villain. This film will change how you see your own emotions.</p>
                             <div class="tissue-row" aria-label="4 out of 5 tissues">
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
@@ -307,9 +246,9 @@
 
                     <article class="movie-card" data-cry="4" data-genre="anime" aria-label="Your Name, 4 out of 5 tissues">
                         <div class="movie-poster-wrap">
-                            <div class="movie-poster" style="background:#e8f2ed;" aria-hidden="true"><i class="fa-solid fa-star" style="color:#2d4a3e;font-size:2rem;"></i></div>
+                            <img src="images/yourName.png" alt="Hand-drawn illustration of two silhouettes connected by a red thread in Your Name" class="movie-poster-img">
                             <div class="movie-overlay" aria-hidden="true">
-                                <p class="movie-overlay-text">Two strangers connected across time and space who almost lose each other forever. The ending hits like a truck.</p>
+                                <p class="movie-overlay-text">Two strangers connected across time by a red thread. Makoto Shinkai made the most beautiful sad film and called it romance.</p>
                             </div>
                         </div>
                         <div class="movie-body">
@@ -318,7 +257,7 @@
                                 <span class="movie-year">2016</span>
                             </div>
                             <span class="badge badge-anime">anime &middot; romance</span>
-                            <p class="movie-desc">Makoto Shinkai made the most beautiful sad movie and called it romance.</p>
+                            <p class="movie-desc">Two strangers. One sky. A connection across time that will wreck you completely.</p>
                             <div class="tissue-row" aria-label="4 out of 5 tissues">
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
@@ -330,11 +269,11 @@
                         </div>
                     </article>
 
-                    <article class="movie-card" data-cry="3" data-genre="drama" aria-label="Good Will Hunting, 3 out of 5 tissues">
+                    <article class="movie-card" data-cry="4" data-genre="drama" aria-label="Good Will Hunting, 4 out of 5 tissues">
                         <div class="movie-poster-wrap">
-                            <div class="movie-poster" style="background:#f0f4ff;" aria-hidden="true"><i class="fa-solid fa-graduation-cap" style="color:#3a4a8f;font-size:2rem;"></i></div>
+                            <img src="images/goodWill.png" alt="Hand-drawn illustration of Will Hunting writing equations on a chalkboard" class="movie-poster-img">
                             <div class="movie-overlay" aria-hidden="true">
-                                <p class="movie-overlay-text">"It's not your fault." Three words. That's all it took. Robin Williams dismantled us all.</p>
+                                <p class="movie-overlay-text">A genius janitor, a stubborn therapist, and the most devastating "it's not your fault" scene ever put on film.</p>
                             </div>
                         </div>
                         <div class="movie-body">
@@ -342,40 +281,15 @@
                                 <h3 class="movie-title">Good Will Hunting</h3>
                                 <span class="movie-year">1997</span>
                             </div>
-                            <span class="badge badge-drama">drama &middot; psychology</span>
-                            <p class="movie-desc">About emotional walls and finally letting someone see you.</p>
-                            <div class="tissue-row" aria-label="3 out of 5 tissues">
+                            <span class="badge badge-drama">drama</span>
+                            <p class="movie-desc">It's not your fault. It's not your fault. It's not your fault.</p>
+                            <div class="tissue-row" aria-label="4 out of 5 tissues">
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-empty" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-empty" aria-hidden="true"></i>
-                                <span class="tissue-score">3/5</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="movie-card" data-cry="3" data-genre="romance" aria-label="The Fault in Our Stars, 3 out of 5 tissues">
-                        <div class="movie-poster-wrap">
-                            <div class="movie-poster" style="background:#fdf0ec;" aria-hidden="true"><i class="fa-solid fa-meteor" style="color:#C0614A;font-size:2rem;"></i></div>
-                            <div class="movie-overlay" aria-hidden="true">
-                                <p class="movie-overlay-text">"Okay? Okay." Two words that contain an entire love story and its ending. We are not okay.</p>
-                            </div>
-                        </div>
-                        <div class="movie-body">
-                            <div class="movie-title-row">
-                                <h3 class="movie-title">The Fault in Our Stars</h3>
-                                <span class="movie-year">2014</span>
-                            </div>
-                            <span class="badge badge-romance">romance &middot; drama</span>
-                            <p class="movie-desc">Young love facing something no one should have to face.</p>
-                            <div class="tissue-row" aria-label="3 out of 5 tissues">
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
                                 <i class="fa-solid fa-toilet-paper tissue-icon-filled" aria-hidden="true"></i>
                                 <i class="fa-solid fa-toilet-paper tissue-icon-empty" aria-hidden="true"></i>
-                                <i class="fa-solid fa-toilet-paper tissue-icon-empty" aria-hidden="true"></i>
-                                <span class="tissue-score">3/5</span>
+                                <span class="tissue-score">4/5</span>
                             </div>
                         </div>
                     </article>
@@ -422,20 +336,7 @@
             }
 
             // Global State Keepers for Movie Filters
-            let activeCry = 'all';
             let activeGenre = 'all';
-
-            // Handles filtering cards down by Tissue Ratings
-            function filterCry(level, btn) {
-                activeCry = level;
-                document.querySelectorAll('[onclick^="filterCry"]').forEach(b => {
-                    b.classList.remove('active');
-                    b.setAttribute('aria-pressed', 'false');
-                });
-                btn.classList.add('active');
-                btn.setAttribute('aria-pressed', 'true');
-                applyFilters();
-            }
 
             // Handles filtering cards down by Genre Categories
             function filterGenre(genre, btn) {
@@ -451,36 +352,15 @@
 
             // Core layout rendering evaluation method 
             function applyFilters() {
-                let count = 0; 
+                let count = 0;
                 const cards = document.querySelectorAll('#movies-grid .movie-card');
-
                 cards.forEach(function(card) {
-                    const cry = card.getAttribute('data-cry');
                     const genre = card.getAttribute('data-genre');
-
-                    // Check Tissue Condition
-                    let matchesCry = false;
-                    if (activeCry === 'all') {
-                        matchesCry = true;
-                    } else if (activeCry === '5') {
-                        matchesCry = (cry === '5');
-                    } else if (activeCry === '4') {
-                        matchesCry = (parseInt(cry) >= 4);
-                    } else if (activeCry === '3') {
-                        matchesCry = (parseInt(cry) >= 3);
-                    }
-
-                    // Check Genre Condition
-                    let matchesGenre = (activeGenre === 'all' || genre === activeGenre);
-
-                    // Final calculation to determine visibility state
-                    const show = matchesCry && matchesGenre;
+                    const show = (activeGenre === 'all' || genre === activeGenre);
                     card.style.display = show ? '' : 'none';
                     if (show) count++;
                 });
-
-                // Updates dynamic layout status string safely with accessibility configurations
-                document.getElementById('movie-count').textContent = 'showing ' + count + ' movie' + (count !== 1 ? 's' : ''); 
+                document.getElementById('movie-count').textContent = 'showing ' + count + ' movie' + (count !== 1 ? 's' : '');
             }
             
             // Fires initial grid assessment to handle accurate card count configuration upon layout loading

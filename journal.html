@@ -16,15 +16,16 @@
 <header>
             <nav class="navbar" aria-label="Main navigation">
                 <div class="navbar-inner">
-                    <a href="index.html" class="navbar-logo">
+                    <a href="homepage.html" class="navbar-logo">
                         <img src="images/logo.png" class="logo-img" alt="" />
                         it's okay to <span>ugly cry</span>
                     </a>
 
-                    <ul class="navbar-links" role="list">
-                        <li><a href="movie.html" ><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated</a></li>
+                                        <ul class="navbar-links" role="list">
+                        <li><a href="movie.html"><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated movies</a></li>
                         <li><a href="journal.html" class="active" aria-current="page"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal</a></li>
                         <li><a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a></li>
+                        <li><a href="hsp_quiz.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> am i an HSP?</a></li>
                         <li><a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a></li>
                         <li><a href="emotional_kit.html" class="navbar-cta"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a></li>
                     </ul>
@@ -37,12 +38,12 @@
                 </div> 
                 
                 <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-                    <a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> home</a>
+                    <a href="homepage.html"><i class="fa-solid fa-house" aria-hidden="true"></i> home</a>
                     <a href="movie.html"><i class="fa-solid fa-film" aria-hidden="true"></i> cry-rated movies</a>
-                    <a href="journal.html" aria-current="page"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal prompts</a>
+                    <a href="journal.html" aria-current="page"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> journal</a>
                     <a href="hsp.html"><i class="fa-solid fa-heart" aria-hidden="true"></i> HSP explained</a>
-                    <a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a>
                     <a href="hsp_quiz.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> am i an HSP?</a>
+                    <a href="sub_page.html"><i class="fa-solid fa-wind" aria-hidden="true"></i> feel your feelings</a>
                     <a href="emotional_kit.html"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i> get support</a>
                 </nav>
             </nav>
@@ -83,6 +84,7 @@
         <button class="cpill" data-cat="processing">💧 processing</button>
         <button class="cpill" data-cat="growth">🌸 growth</button>
         <button class="cpill" data-cat="body">🫁 body &amp; senses</button>
+        <button class="cpill" data-cat="movies">🎬 movies</button>
       </div>
     </section>
 
@@ -225,6 +227,11 @@ const PROMPTS = [
   { text: "What sensory experience recently made you feel most alive or most overwhelmed?", cat: "body", label: "sensory world" },
   { text: "Where in your body do you feel joy? Where do you feel grief?", cat: "body", label: "body mapping" },
   { text: "Describe a smell, sound, or texture that brings you instant comfort.", cat: "body", label: "soothing senses" },
+  { text: "What did the last movie you watched make you feel that you haven't said out loud yet?", cat: "movies", label: "film feelings" },
+  { text: "Is there a fictional character you see yourself in? What is it about them that feels familiar?", cat: "movies", label: "character mirror" },
+  { text: "Write about a scene from a movie that made you cry — and what it was really about for you.", cat: "movies", label: "emotional scene" },
+  { text: "If your life right now were a film, what genre would it be? What's the turning point?", cat: "movies", label: "your story" },
+  { text: "What movie do you return to when you need to feel understood? Why that one?", cat: "movies", label: "comfort film" },
 ];
 
 const TIPS = [
@@ -462,8 +469,8 @@ function renderEntries() {
           promptSnip +
         '</div>' +
         '<div class="entry-actions">' +
-          '<button class="icon-btn" data-id="' + e.id + '" title="edit">✏️</button>' +
-          '<button class="icon-btn delete" data-id="' + e.id + '" title="delete">🗑</button>' +
+          '<button class="icon-btn" data-id="' + e.id + '" title="edit" aria-label="rename entry">✏️</button>' +
+          '<button class="icon-btn delete" data-id="' + e.id + '" title="delete" aria-label="delete entry">🗑</button>' +
         '</div>' +
       '</div>' +
       '<p class="entry-preview">' + escapeHtml(e.text) + '</p>' +
