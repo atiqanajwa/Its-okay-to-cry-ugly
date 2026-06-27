@@ -739,10 +739,6 @@ p {
 .home-page textarea.journal-area::placeholder { color: var(--text-muted); font-style: italic; }
 .home-page textarea.journal-area:focus { border-color: var(--green-dark); }
 .home-page .journal-btns { display: flex; gap: 0.75rem; margin-top: 1rem; }
-/* home-page footer override removed */
-/* home-page .footer-logo override removed */
-
-/* home-page .footer-links override removed */
 
 
 .home-page .hero > * { animation: fadeUp 0.7s var(--ease) backwards; }
